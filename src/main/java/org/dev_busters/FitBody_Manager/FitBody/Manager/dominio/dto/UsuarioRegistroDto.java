@@ -4,10 +4,11 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Clasificati
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Objetivo;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Sex;
 
-public record UsuarioDto(
+public record UsuarioRegistroDto(
         Long idUsuario,
         String nombre,
         Integer edad,
+        String correo, //atributo que se obtiene desde el RegistroEntity
         Sex sexo,
         Double altura,
         Double peso,
