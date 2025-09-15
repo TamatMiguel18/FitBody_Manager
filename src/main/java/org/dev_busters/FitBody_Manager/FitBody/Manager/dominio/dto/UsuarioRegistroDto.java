@@ -8,7 +8,7 @@ public record UsuarioRegistroDto(
         Long idUsuario,
         String nombre,
         Integer edad,
-        String correo, //atributo que se obtiene desde el RegistroEntity
+        String correo, //atributo que se obtiene desde el RegistroEntity para manejar una sola presentacion
         Sex sexo,
         Double altura,
         Double peso,
