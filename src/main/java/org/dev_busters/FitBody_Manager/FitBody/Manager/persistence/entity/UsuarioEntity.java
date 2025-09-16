@@ -15,8 +15,8 @@ public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
-        @OneToOne(mappedBy = "usuario")
-        private RegistroEntity registro; //referencia del atributo usuario en RegistroEntity por si se necesita.
+    @OneToOne(mappedBy = "usuario")
+    private RegistroEntity registro; //referencia del atributo usuario en RegistroEntity por si se necesita.
     @Column(length = 64, nullable = false)
     private String nombre;
     @Column(precision = 2, nullable = false)
@@ -24,15 +24,15 @@ public class UsuarioEntity {
     @Enumerated(EnumType.STRING)
     private Sex sexo;
     @Column(precision = 10, scale = 2, nullable = false)
-    private BigDecimal altura;
+    private Double altura;
     @Column(precision = 10, scale = 2, nullable = false)
-    private BigDecimal peso;
+    private Double peso;
     @Column(precision = 10, scale = 2, nullable = false)
-    private BigDecimal pesoDeseado;
+    private Double pesoDeseado;
     @Enumerated(EnumType.STRING)
     private Clasificacion clasificacion;
     @Enumerated(EnumType.STRING)
     private Objetivo objetivo;
     @Column(precision = 10, scale = 2, nullable = false)
-    private BigDecimal masaCorporal;
+    private Double masaCorporal;
 }
