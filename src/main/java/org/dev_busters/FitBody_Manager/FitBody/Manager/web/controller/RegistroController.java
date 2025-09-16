@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/Registro")
 @Tag(name = "Registro", description = "Crud para manejar operaciones basicas como buscar, eliminar, editar o guardar registros")
-public class RegistroController {
+public class    RegistroController {
     private final RegistroService registroService;
 
     public RegistroController(RegistroService registroService) {
@@ -57,7 +57,7 @@ public class RegistroController {
     }
 
     @DeleteMapping("{idRegistro}")
-    public ResponseEntity<void> eliminarRegistro(Long codigo){
+    public ResponseEntity<Void> eliminarRegistro(Long codigo){
         this.registroService.eliminarRegistro(codigo);
         return ResponseEntity.ok().build();
     }
