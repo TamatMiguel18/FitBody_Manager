@@ -34,7 +34,7 @@ public class UsuarioEntity {
 
     @Column(name = "objetivo_personal", nullable = false)
     private String objetivoPersonal;
-    
+
     @Column(name = "masa_corporal", precision = 10, scale = 2, nullable = false)
     private BigDecimal masaCorporal;
 }
