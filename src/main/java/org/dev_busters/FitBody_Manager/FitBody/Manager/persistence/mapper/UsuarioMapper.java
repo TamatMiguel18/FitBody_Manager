@@ -11,13 +11,13 @@ import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {SexMapper.class})
 public interface UsuarioMapper {
 
     @Mapping(source = "idUsuario", target = "idUsuario")
     @Mapping(source = "nombre", target = "nombre")
     @Mapping(source = "edad", target = "edad")
-    @Mapping(source = "sexo", target = "sexo")
+    @Mapping(source = "sexo", target = "sexo", qualifiedByName = "stringToSex")
     @Mapping(source = "altura", target = "altura")
     @Mapping(source = "peso", target = "peso")
     @Mapping(source = "pesoDeseado", target = "pesoDeseado")
@@ -29,11 +29,8 @@ public interface UsuarioMapper {
     List<UsuarioDto> toDto(Iterable<UsuarioEntity> entities);
 
     @InheritInverseConfiguration
+    @Mapping(source = "sexo", target = "sexo", qualifiedByName = "sexToString")
     UsuarioEntity toEntity(UsuarioDto dto);
 
-    @Mapping(source = "altura", target = "altura")
-    @Mapping(source = "peso", target = "peso")
-    @Mapping(source = "pesoDeseado", target = "pesoDeseado")
-    @Mapping(source = "objetivoPersonal", target = "objetivoPersonal")
     void modificarEntityFromDto(ModUsuarioDto modUsuarioDto, @MappingTarget UsuarioEntity entity);
 }
