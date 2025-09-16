@@ -35,7 +35,7 @@ public class UsuarioController {
         return ResponseEntity.ok(this.usuarioService.obtenerTodos());
     }
 
-    @GetMapping
+    @GetMapping("/peliculas")
     @Operation(summary = "Obtener todos los usuarios",
             description = "Retorna una lista de todos los usuarios registrados.")
     public ResponseEntity<List<UsuarioDto>> obtenerTodos() {
