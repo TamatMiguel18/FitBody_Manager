@@ -13,9 +13,6 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {
-    @Mapping(source = "sexo", target = "sexo")
-    @Mapping(source = "clasificacionImc", target = "clasificacionImc")
-    @Mapping(source = "objetivoPersonal", target = "objetivoPersonal")
     UsuarioDto toDto(UsuarioEntity entity);
 
     List<UsuarioDto> toDto(Iterable<UsuarioEntity> entities);

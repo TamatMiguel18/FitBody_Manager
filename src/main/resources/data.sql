@@ -1,2 +1,0 @@
-INSERT IGNORE INTO usuarios (nombre, edad, sexo, altura, peso, peso_deseado, clasificacion_imc, objetivo_personal, masa_corporal)
-VALUES ('Pedro Ruiz', 40, 'Masculino', 1.75, 90.0, 85.0, 'Obesidad', 'Estar_Activo', 83.00);
