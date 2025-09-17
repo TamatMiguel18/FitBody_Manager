@@ -12,14 +12,13 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.repository.RegistroReposi
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import retrofit2.http.Path;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/v1/Registro")
 @Tag(name = "Registro", description = "Crud para manejar operaciones basicas como buscar, eliminar, editar o guardar registros")
-public class RegistroController {
+public class    RegistroController {
     private final RegistroService registroService;
 
     public RegistroController(RegistroService registroService) {
@@ -57,7 +56,7 @@ public class RegistroController {
     }
 
     @DeleteMapping("{idRegistro}")
-    public ResponseEntity<Void> eliminarRegistro(Long codigo){
+    public ResponseEntity<Void> eliminarRegistro(@PathVariable Long codigo){
         this.registroService.eliminarRegistro(codigo);
         return ResponseEntity.ok().build();
     }
