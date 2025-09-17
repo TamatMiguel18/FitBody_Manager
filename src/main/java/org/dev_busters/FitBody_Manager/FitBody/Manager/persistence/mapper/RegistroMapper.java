@@ -9,7 +9,7 @@ import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = UsuarioMapper.class) //Para poder tomar el objeto y pasarlo al dto de Registro
 public interface RegistroMapper {
     RegistroDto toDto(RegistroEntity registroEntity);
     List<RegistroDto> toDto(Iterable<RegistroEntity> entities);
