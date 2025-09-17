@@ -27,7 +27,7 @@ public class UsuarioController {
 
     //ResponseEntity: manejar las respuestas HTTP
     @GetMapping
-    public ResponseEntity<List<UsuarioDto>> obtenerPeliculas() {
+    public ResponseEntity<List<UsuarioDto>> obtenerUsuarios() {
         //HTTP: 404: no se encontro,
         //      405: Metodo no permitido
         //      500: Error de logica de trabajo o interno
