@@ -57,7 +57,7 @@ public class RegistroController {
     }
 
     @DeleteMapping("{idRegistro}")
-    public ResponseEntity<void> eliminarRegistro(Long codigo){
+    public ResponseEntity<Void> eliminarRegistro(Long codigo){
         this.registroService.eliminarRegistro(codigo);
         return ResponseEntity.ok().build();
     }
