@@ -45,18 +45,18 @@ public class EjercicioController {
         return ResponseEntity.ok(this.ejercicioService.buscarPorId(idEjercicio));
     }
 
-    @PostMapping("{codigo}")
+    @PostMapping
     public ResponseEntity<EjercicioDto>guardarEjercicio(@RequestBody @Valid EjercicioDto ejercicioDto){
         //retornar una respuesta de creacion de entidad dentro del RepositoryEntity
         return ResponseEntity.status(HttpStatus.CREATED).body(this.ejercicioService.guardarEjercicio(ejercicioDto));
     }
 
-    @PutMapping("{codigo}")
+    @PutMapping("{idEjercicio}")
     public ResponseEntity<EjercicioDto> modificarEjercicio(@PathVariable Long idEjercicio, @RequestBody ModEjercicioDto modEjercicioDto){
         return ResponseEntity.ok(this.ejercicioService.modificarEjercicio(idEjercicio,modEjercicioDto));
     }
 
-    @DeleteMapping("{codigo}")
+    @DeleteMapping("{idEjercicio}")
     public ResponseEntity<Void>eliminarEjercicio(@PathVariable Long idEjercicio){
         this.ejercicioService.eliminarEjercicio(idEjercicio);
         return ResponseEntity.ok().build();

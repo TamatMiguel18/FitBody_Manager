@@ -1,4 +1,4 @@
-package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence;
+package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entityRepository;
 
 
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.EjercicioDto;
