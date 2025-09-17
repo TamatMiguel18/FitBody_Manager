@@ -5,6 +5,7 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.RegistroDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.RegistroNotFound;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.RegistroYaExiste;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.crud.CrudRegistroEntity;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.crud.CrudUsuarioEntity;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.RegistroEntity;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.UsuarioEntity;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.mapper.RegistroMapper;
@@ -18,12 +19,12 @@ import java.util.List;
 public class RegistroEntityRepository implements RegistroRepository {
     private final CrudRegistroEntity crudRegistroEntity;
     private final RegistroMapper registroMapper;
-    private final UsuarioRepository usuarioRepository;
+    private final CrudUsuarioEntity crudUsuarioEntity;
 
-    public RegistroEntityRepository(CrudRegistroEntity crudRegistroEntity, RegistroMapper registroMapper, UsuarioRepository usuarioRepository) {
+    public RegistroEntityRepository(CrudRegistroEntity crudRegistroEntity, RegistroMapper registroMapper, UsuarioRepository usuarioRepository, CrudUsuarioEntity crudUsuarioEntity) {
         this.crudRegistroEntity = crudRegistroEntity;
         this.registroMapper = registroMapper;
-        this.usuarioRepository = usuarioRepository;
+        this.crudUsuarioEntity = crudUsuarioEntity;
     }
 
     @Override
@@ -44,9 +45,8 @@ public class RegistroEntityRepository implements RegistroRepository {
         RegistroEntity registroEntity = this.registroMapper.toEntity(registro);
 
         Long idUsuario = registro.usuario().idUsuario();
-        UsuarioEntity usuario = usuarioRepository.findById(idUsuario)
+        UsuarioEntity usuario = crudUsuarioEntity.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id " + idUsuario));
-
         registroEntity.setUsuario(usuario);
         this.crudRegistroEntity.save(registroEntity);
         return this.registroMapper.toDto(registroEntity);

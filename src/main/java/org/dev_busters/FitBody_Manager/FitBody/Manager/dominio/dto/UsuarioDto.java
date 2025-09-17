@@ -19,7 +19,7 @@ public record UsuarioDto(
         Integer edad,
 
         @Valid
-        @NotBlank(message = "El sexo es obligatorio")
+        @NotNull(message = "El sexo es obligatorio")
         Sex sexo,
 
         @DecimalMin(value = "0.01", message = "La altura debe ser mayor que 0")
@@ -32,11 +32,11 @@ public record UsuarioDto(
         BigDecimal pesoDeseado,
 
         @Valid
-        @NotBlank(message = "La clasificación IMC es obligatoria")
+        @NotNull(message = "La clasificación IMC es obligatoria")
         Clasificacion clasificacionImc,
 
         @Valid
-        @NotBlank(message = "El objetivo personal es obligatorio")
+        @NotNull(message = "El objetivo personal es obligatorio")
         Objetivo objetivoPersonal,
 
         @DecimalMin(value = "0.0", message = "La masa corporal no puede ser negativa")
