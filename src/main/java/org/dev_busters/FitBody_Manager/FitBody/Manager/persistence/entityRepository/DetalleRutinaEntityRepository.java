@@ -1,7 +1,12 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entityRepository;
 
+import jakarta.persistence.Id;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.DetalleRutinaDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModDetalleRutinaDto;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.DetalleRutinaNoExisteException;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.DetalleRutinaYaExisteException;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.UsuarioNoExisteException;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.UsuarioYaExisteException;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.crud.CrudDetalleRutinaEntity;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.DetalleRutinaEntity;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.mapper.DetalleRutinaMapper;
@@ -35,6 +40,10 @@ public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
 
     @Override
     public DetalleRutinaDto guardarDetalleRutina(DetalleRutinaDto detalleRutinaDto) {
+        if (this.crudDetalleRutinaEntity.findByIdDetalleRutina(detalleRutinaDto.idDetalleRutina()) != null){
+            throw new DetalleRutinaYaExisteException(detalleRutinaDto.idDetalleRutina());
+        }
+
         DetalleRutinaEntity detalleRutina = this.detalleRutinaMapper.toEntity(detalleRutinaDto);
         this.crudDetalleRutinaEntity.save(detalleRutina);
         return this.detalleRutinaMapper.toDto(detalleRutina);
@@ -45,7 +54,7 @@ public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
         DetalleRutinaEntity detalleRutina = this.crudDetalleRutinaEntity.findById(idDetalleRutina).orElse(null);
 
         if (detalleRutina == null) {
-            return null;
+            throw new DetalleRutinaNoExisteException(idDetalleRutina);
         } else {
             this.detalleRutinaMapper.modificarEntityFromDto(modDetalleRutinaDto, detalleRutina);
             return detalleRutinaMapper.toDto(this.crudDetalleRutinaEntity.save(detalleRutina));
@@ -54,6 +63,11 @@ public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
 
     @Override
     public void eliminarDetalleRutina(Long idDetalleRutina) {
-        this.crudDetalleRutinaEntity.deleteById(idDetalleRutina);
+        DetalleRutinaEntity detalleRutina = this.crudDetalleRutinaEntity.findById(idDetalleRutina).orElse(null);
+        if (detalleRutina == null) {
+            throw new DetalleRutinaNoExisteException(idDetalleRutina);
+        } else {
+            this.crudDetalleRutinaEntity.deleteById(idDetalleRutina);
+        }
     }
 }
