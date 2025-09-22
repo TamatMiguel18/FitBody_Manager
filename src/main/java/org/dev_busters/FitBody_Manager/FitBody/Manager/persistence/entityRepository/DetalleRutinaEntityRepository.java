@@ -28,7 +28,7 @@ public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
     }
 
     @Override
-    public DetalleRutinaDto buscarPorId(Integer idDetalleRutina) {
+    public DetalleRutinaDto buscarPorId(Long idDetalleRutina) {
         Optional<DetalleRutinaEntity> detalleRutinaOptional = this.crudDetalleRutinaEntity.findById(idDetalleRutina);
         if (detalleRutinaOptional.isPresent()) {
             return this.detalleRutinaMapper.toDto(detalleRutinaOptional.get());
