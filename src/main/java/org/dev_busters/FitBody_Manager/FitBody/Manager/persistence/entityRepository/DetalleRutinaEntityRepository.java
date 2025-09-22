@@ -1,0 +1,62 @@
+package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entityRepository;
+
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.DetalleRutinaDto;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModDetalleRutinaDto;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.crud.CrudDetalleRutinaEntity;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.DetalleRutinaEntity;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.mapper.DetalleRutinaMapper;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.repository.DetalleRutinaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
+
+    private final CrudDetalleRutinaEntity crudDetalleRutinaEntity;
+    private final DetalleRutinaMapper detalleRutinaMapper;
+
+    public DetalleRutinaEntityRepository(CrudDetalleRutinaEntity crudDetalleRutinaEntity, DetalleRutinaMapper detalleRutinaMapper) {
+        this.crudDetalleRutinaEntity = crudDetalleRutinaEntity;
+        this.detalleRutinaMapper = detalleRutinaMapper;
+    }
+
+    @Override
+    public List<DetalleRutinaDto> obtenerTodos() {
+        return this.detalleRutinaMapper.toDto(this.crudDetalleRutinaEntity.findAll());
+    }
+
+    @Override
+    public DetalleRutinaDto buscarPorId(Integer idDetalleRutina) {
+        Optional<DetalleRutinaEntity> detalleRutinaOptional = this.crudDetalleRutinaEntity.findById(idDetalleRutina);
+        if (detalleRutinaOptional.isPresent()) {
+            return this.detalleRutinaMapper.toDto(detalleRutinaOptional.get());
+        }
+        return null;
+    }
+
+    @Override
+    public DetalleRutinaDto guardarDetalleRutina(DetalleRutinaDto detalleRutinaDto) {
+        DetalleRutinaEntity detalleRutina = this.detalleRutinaMapper.toEntity(detalleRutinaDto);
+        this.crudDetalleRutinaEntity.save(detalleRutina);
+        return this.detalleRutinaMapper.toDto(detalleRutina);
+    }
+
+    @Override
+    public DetalleRutinaDto modificarDetalleRutina(Integer idDetalleRutina, ModDetalleRutinaDto modDetalleRutinaDto) {
+        DetalleRutinaEntity detalleRutina = this.crudDetalleRutinaEntity.findById(idDetalleRutina).orElse(null);
+
+        if (detalleRutina == null) {
+            return null;
+        } else {
+            this.detalleRutinaMapper.modificarEntityFromDto(modDetalleRutinaDto, detalleRutina);
+            return detalleRutinaMapper.toDto(this.crudDetalleRutinaEntity.save(detalleRutina));
+        }
+    }
+
+    @Override
+    public void eliminarDetalleRutina(Integer idDetalleRutina) {
+        this.crudDetalleRutinaEntity.deleteById(idDetalleRutina);
+    }
+}
