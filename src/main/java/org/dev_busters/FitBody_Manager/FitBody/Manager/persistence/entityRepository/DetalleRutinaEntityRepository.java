@@ -29,12 +29,9 @@ public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
 
     @Override
     public DetalleRutinaDto buscarPorId(Long idDetalleRutina) {
-        Optional<DetalleRutinaEntity> detalleRutinaOptional = this.crudDetalleRutinaEntity.findById(idDetalleRutina);
-        if (detalleRutinaOptional.isPresent()) {
-            return this.detalleRutinaMapper.toDto(detalleRutinaOptional.get());
-        }
-        return null;
+        return this.detalleRutinaMapper.toDto(this.crudDetalleRutinaEntity.findById(idDetalleRutina).orElse(null));
     }
+
 
     @Override
     public DetalleRutinaDto guardarDetalleRutina(DetalleRutinaDto detalleRutinaDto) {
@@ -44,7 +41,7 @@ public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
     }
 
     @Override
-    public DetalleRutinaDto modificarDetalleRutina(Integer idDetalleRutina, ModDetalleRutinaDto modDetalleRutinaDto) {
+    public DetalleRutinaDto modificarDetalleRutina(Long idDetalleRutina, ModDetalleRutinaDto modDetalleRutinaDto) {
         DetalleRutinaEntity detalleRutina = this.crudDetalleRutinaEntity.findById(idDetalleRutina).orElse(null);
 
         if (detalleRutina == null) {
@@ -56,7 +53,7 @@ public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
     }
 
     @Override
-    public void eliminarDetalleRutina(Integer idDetalleRutina) {
+    public void eliminarDetalleRutina(Long idDetalleRutina) {
         this.crudDetalleRutinaEntity.deleteById(idDetalleRutina);
     }
 }

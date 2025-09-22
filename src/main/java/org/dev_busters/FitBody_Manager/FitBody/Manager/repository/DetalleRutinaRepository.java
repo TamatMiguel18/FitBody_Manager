@@ -11,8 +11,8 @@ import java.util.Optional;
 public interface DetalleRutinaRepository {
     // Firmas de los métodos para la entidad DetalleRutina
     List<DetalleRutinaDto> obtenerTodos();
-    Optional<DetalleRutinaDto> buscarPorId(Integer idDetalleRutina);
+    DetalleRutinaDto buscarPorId(Long idDetalleRutina);
     DetalleRutinaDto guardarDetalleRutina(DetalleRutinaDto detalleRutinaDto);
-    DetalleRutinaDto modificarDetalleRutina(Integer idDetalleRutina, ModDetalleRutinaDto modDetalleRutinaDto);
-    void eliminarDetalleRutina(Integer idDetalleRutina);
+    DetalleRutinaDto modificarDetalleRutina(Long idDetalleRutina, ModDetalleRutinaDto modDetalleRutinaDto);
+    void eliminarDetalleRutina(Long idDetalleRutina);
 }

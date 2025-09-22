@@ -4,7 +4,6 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.Detall
 import org.springframework.data.repository.CrudRepository;
 
 public interface CrudDetalleRutinaEntity
-        extends CrudRepository<DetalleRutinaEntity, Integer> {
-    //Se crea el acceso al CRUD de mi entidad
-    DetalleRutinaEntity findByIdRutina(Integer idRutina);
+        extends CrudRepository<DetalleRutinaEntity, Long> {
+    DetalleRutinaEntity findByIdDetalleRutina(Long idDetalleRutina);
 }

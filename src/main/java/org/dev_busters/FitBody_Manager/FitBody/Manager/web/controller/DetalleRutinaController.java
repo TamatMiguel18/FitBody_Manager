@@ -41,7 +41,7 @@ public class DetalleRutinaController {
             })
     public ResponseEntity<DetalleRutinaDto> buscarPorId
             (@Parameter(description = "Identificador del detalle de la rutina a recuperar", example = "1")
-             @PathVariable Integer Id) {
+             @PathVariable Long Id) {
         DetalleRutinaDto detalleRutina = this.detalleRutinaService.buscarPorId(Id);
         if (detalleRutina != null) {
             return ResponseEntity.ok(detalleRutina);
@@ -59,7 +59,7 @@ public class DetalleRutinaController {
 
     @PutMapping("{Id}")
     public ResponseEntity<DetalleRutinaDto> modificarDetalleRutina
-            (@PathVariable Integer Id, @RequestBody ModDetalleRutinaDto modDetalleRutinaDto) {
+            (@PathVariable Long Id, @RequestBody ModDetalleRutinaDto modDetalleRutinaDto) {
         DetalleRutinaDto detalleRutina = this.detalleRutinaService.modificarDetalleRutina(Id, modDetalleRutinaDto);
         if (detalleRutina != null) {
             return ResponseEntity.ok(detalleRutina);
@@ -69,7 +69,7 @@ public class DetalleRutinaController {
     }
 
     @DeleteMapping("{Id}")
-    public ResponseEntity<Void> eliminarDetalleRutina(@PathVariable Integer Id) {
+    public ResponseEntity<Void> eliminarDetalleRutina(@PathVariable Long Id) {
         this.detalleRutinaService.eliminarDetalleRutina(Id);
         return ResponseEntity.ok().build();
     }

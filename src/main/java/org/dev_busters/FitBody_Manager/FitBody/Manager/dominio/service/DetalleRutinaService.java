@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Service
 public class DetalleRutinaService {
-
     private final DetalleRutinaRepository detalleRutinaRepository;
 
     public DetalleRutinaService(DetalleRutinaRepository detalleRutinaRepository) {
@@ -29,11 +28,11 @@ public class DetalleRutinaService {
         return this.detalleRutinaRepository.guardarDetalleRutina(detalleRutinaDto);
     }
 
-    public DetalleRutinaDto modificarDetalleRutina(Integer Id, ModDetalleRutinaDto modDetalleRutinaDto) {
+    public DetalleRutinaDto modificarDetalleRutina(Long Id, ModDetalleRutinaDto modDetalleRutinaDto) {
         return this.detalleRutinaRepository.modificarDetalleRutina(Id, modDetalleRutinaDto);
     }
 
-    public void eliminarDetalleRutina(Integer Id) {
+    public void eliminarDetalleRutina(Long Id) {
         this.detalleRutinaRepository.eliminarDetalleRutina(Id);
     }
 }
