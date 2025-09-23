@@ -4,6 +4,7 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModRutinaDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.RutinaDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.RutinaEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import java.util.List;
