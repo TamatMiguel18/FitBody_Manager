@@ -6,3 +6,6 @@ VALUES (1,'dlopez-@kina.edu.gt', 'pepito123');
 
 INSERT IGNORE INTO Ejercicio(nombre_ejercicio, descripcion, grupo_muscular, tipo_ejercicio, dificultad)
 VALUES ('Pushups', 'ejercicio con manos', 'PECHO', 'FUERZA', 'REGULAR');
+
+INSERT IGNORE INTO Rutina(nombre_rutina, frecuencia, duracion, dificultad, clasificacion_imc)
+VALUES ("Marcar brazos",7,"Semanal","REGULAR","Peso_Normal");
