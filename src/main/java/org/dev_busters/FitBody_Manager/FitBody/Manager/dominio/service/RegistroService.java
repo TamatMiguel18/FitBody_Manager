@@ -1,5 +1,6 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.service;
 
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModRegistroDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.RegistroDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.repository.RegistroRepository;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,8 @@ public class RegistroService {
         return this.registroRepository.guardarRegistro(registroDto);
     }
 
-    public RegistroDto modificarRegistro(Long idRegistro, RegistroDto registroDto){
-        return this.registroRepository.modificarRegistro(idRegistro, registroDto);
+    public RegistroDto modificarRegistro(Long idRegistro, ModRegistroDto modRegistroDto){
+        return this.registroRepository.modificarRegistro(idRegistro, modRegistroDto);
     }
 
     public void eliminarRegistro(Long idRegistro){

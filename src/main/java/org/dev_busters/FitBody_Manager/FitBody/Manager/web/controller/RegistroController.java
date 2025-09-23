@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModRegistroDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.RegistroDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.service.RegistroService;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.repository.RegistroRepository;
@@ -51,8 +52,8 @@ public class    RegistroController {
     }
 
     @PutMapping("{idRegistro}")
-    public ResponseEntity<RegistroDto> modificarRegistro(@PathVariable Long idRegistro, @RequestBody RegistroDto registroDto){
-        return ResponseEntity.ok().body(this.registroService.modificarRegistro(idRegistro, registroDto));
+    public ResponseEntity<RegistroDto> modificarRegistro(@PathVariable Long idRegistro, @RequestBody ModRegistroDto modRegistroDto){
+        return ResponseEntity.ok().body(this.registroService.modificarRegistro(idRegistro, modRegistroDto));
     }
 
     @DeleteMapping("{idRegistro}")

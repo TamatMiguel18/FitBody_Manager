@@ -1,8 +1,7 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.web.exception;
 
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.*;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.Error;
-import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.RegistroNotFound;
-import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.RegistroYaExiste;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,6 +24,20 @@ public class RestExceptionHandler {
     @ExceptionHandler(RegistroNotFound.class)
     public ResponseEntity<Error> handlerException(RegistroNotFound e) {
         Error error = new Error("Pelicula no encontrada", e.getMessage());
+        return ResponseEntity.badRequest().body(error);
+    }
+
+    //Manejo de excepcion cuando hay 2 rutinas con el mismo nombre
+    @ExceptionHandler(RutinaYaExiste.class)
+    public ResponseEntity<Error> handlerException(RutinaYaExiste e){
+        Error error = new Error("Rutina ya existe", "Hay una rutina con el mismo nombre");
+        return ResponseEntity.badRequest().body(error);
+    }
+
+    //Manejo de excepciones cuando una rutina no existe
+    @ExceptionHandler(RutinaNotFound.class)
+    public ResponseEntity<Error> handlerException(RutinaNotFound e){
+        Error error = new Error("Rutina no encontrada", "La rutina no existe");
         return ResponseEntity.badRequest().body(error);
     }
 

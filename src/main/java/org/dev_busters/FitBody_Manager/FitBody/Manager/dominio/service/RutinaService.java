@@ -1,5 +1,6 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.service;
 
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModRutinaDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.RutinaDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.repository.RutinaRepository;
 import org.springframework.stereotype.*;
@@ -24,6 +25,14 @@ public class RutinaService {
 
     public RutinaDto guardarRutina(RutinaDto rutinaDto){
         return this.rutinaRepository.guardarRutina(rutinaDto);
+    }
+
+    public RutinaDto modificarRutina(Long idRutina, ModRutinaDto modRutinaDto){
+        return this.rutinaRepository.modificarRutina(idRutina, modRutinaDto);
+    }
+
+    public void eliminarRutina(Long idRutina){
+        this.rutinaRepository.eliminarRutina(idRutina);
     }
 
 }

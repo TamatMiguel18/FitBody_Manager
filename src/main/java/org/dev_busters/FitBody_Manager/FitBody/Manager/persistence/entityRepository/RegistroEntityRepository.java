@@ -43,11 +43,11 @@ public class RegistroEntityRepository implements RegistroRepository {
         }
         RegistroEntity registroEntity = this.registroMapper.toEntity(registro);
 
-        Long idUsuario = registro.usuario().idUsuario();
-        UsuarioEntity usuario = usuarioRepository.findById(idUsuario)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id " + idUsuario));
-
-        registroEntity.setUsuario(usuario);
+//        Long idUsuario = registro.usuario().idUsuario();
+//        UsuarioEntity usuario = usuarioRepository.findById(idUsuario)
+//                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id " + idUsuario));
+//
+//        registroEntity.setUsuario(usuario);
         this.crudRegistroEntity.save(registroEntity);
         return this.registroMapper.toDto(registroEntity);
     }
