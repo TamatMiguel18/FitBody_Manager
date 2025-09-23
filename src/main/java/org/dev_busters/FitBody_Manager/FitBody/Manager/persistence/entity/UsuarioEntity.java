@@ -10,22 +10,20 @@ import java.math.BigDecimal;
 public class UsuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
     private Long idUsuario;
-
-    @Column(name = "nombre", length = 64, nullable = false)
+    @Column(length = 64, nullable = false)
     private String nombre;
 
-    @Column(name = "edad", nullable = false)
+    @Column(nullable = false)
     private Integer edad;
 
-    @Column(name = "sexo", nullable = false)
+    @Column(nullable = false)
     private String sexo;
 
-    @Column(name = "altura", precision = 10, scale = 2, nullable = false)
+    @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal altura;
 
-    @Column(name = "peso", precision = 10, scale = 2, nullable = false)
+    @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal peso;
 
     @Column(name = "peso_deseado", precision = 10, scale = 2, nullable = false)
