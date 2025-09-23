@@ -1,8 +1,9 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.service;
 
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.PlanEntrenamientoDto;
-import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModPlanEntrenamientoDTO;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModPlanEntrenamientoDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.repository.PlanEntrenamientoRepository;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.PlanEntrenamientoEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,23 +17,23 @@ public class PlanEntrenamientoService {
         this.planEntrenamientoRepository = planEntrenamientoRepository;
     }
 
-    public List<PlanEntrenamientoDto> obtenerTodos() {
-        return this.planEntrenamientoRepository.obtenerTodos;
+    public List<PlanEntrenamientoDto> obtenerTodo() {
+        return this.planEntrenamientoRepository.obtenerTodo();
     }
 
-    public PlanEntrenamientoDto buscarPorId(Integer idPlan) {
-        return this.planEntrenamientoRepository.buscarporId;
+    public PlanEntrenamientoDto buscarPorId(Long IdPlanEntrenamiento) {
+        return this.planEntrenamientoRepository.buscarPorId(IdPlanEntrenamiento);
     }
 
-    public PlanEntrenamientoDto guardarPlanEntrenamiento(PlanEntrenamientoDto planDTO) {
-        return this.planEntrenamientoRepository.guardarPlanEntrenamiento;
+    public PlanEntrenamientoDto guardarPlanEntrenamiento(PlanEntrenamientoDto PlanEntrenamientoDto) {
+        return this.planEntrenamientoRepository.guardarPlanEntrenamiento(PlanEntrenamientoDto);
     }
 
-    public PlanEntrenamientoDto modificarPlanEntrenamiento(Integer idPlan, ModPlanEntrenamientoDto modPlanDTO) {
-        return this.planEntrenamientoRepository.modificarPlanEntrenamiento;
+    public PlanEntrenamientoDto modificarPlanEntrenamiento(Long IdPlanEntrenamiento, ModPlanEntrenamientoDto modPlanEntrenamientoDto) {
+        return this.planEntrenamientoRepository.modificarPlanEntrenamiento(IdPlanEntrenamiento, modPlanEntrenamientoDto);
     }
 
-    public void eliminarPlanEntrenamiento(Integer idPlan) {
-        this.planEntrenamientoRepository.eliminarPlanEntrenamiento(IdPlanEntrenamiento);
+    public void eliminarPlanEntrenamiento(Integer IdPlanEntrenamiento) {
+        this.planEntrenamientoRepository.eliminarPlanEntrenamiento(Long.valueOf(IdPlanEntrenamiento));
     }
 }

@@ -22,6 +22,7 @@ public class EjercicioService {
     }
 
     public EjercicioDto buscarPorId(long idEjercicio){
+
         return this.ejercicioRepository.buscarPorId(idEjercicio);
     }
 

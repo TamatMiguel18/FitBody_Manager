@@ -26,7 +26,7 @@ public class PlanEntrenamientoEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idRutina", nullable = false)
-    private RutinaEntity rutina;
+    //private RutinaEntity rutina;
 
     @Column(name = "fechaInicio")
     private Date fechaInicio;
