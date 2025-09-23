@@ -27,18 +27,11 @@ public class UsuarioController {
 
     //ResponseEntity: manejar las respuestas HTTP
     @GetMapping
-    public ResponseEntity<List<UsuarioDto>> obtenerPeliculas() {
+    public ResponseEntity<List<UsuarioDto>> obtenerUsuarios() {
         //HTTP: 404: no se encontro,
         //      405: Metodo no permitido
         //      500: Error de logica de trabajo o interno
         //      200: ok
-        return ResponseEntity.ok(this.usuarioService.obtenerTodos());
-    }
-
-    @GetMapping("/peliculas")
-    @Operation(summary = "Obtener todos los usuarios",
-            description = "Retorna una lista de todos los usuarios registrados.")
-    public ResponseEntity<List<UsuarioDto>> obtenerTodos() {
         return ResponseEntity.ok(this.usuarioService.obtenerTodos());
     }
 

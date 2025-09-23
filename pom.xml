@@ -67,6 +67,7 @@
             <artifactId>langchain4j-spring-boot-starter</artifactId>
             <version>1.0.0-beta1</version>
         </dependency>
+
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -90,6 +91,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
+<<<<<<< HEAD
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
@@ -105,6 +107,12 @@
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
 							<version>${org.mapstruct.version}</version>
+=======
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+>>>>>>> main
 						</path>
 					</annotationProcessorPaths>
 					<compilerArgs>
