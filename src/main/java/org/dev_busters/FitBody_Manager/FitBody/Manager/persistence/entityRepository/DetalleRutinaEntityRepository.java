@@ -40,8 +40,8 @@ public class DetalleRutinaEntityRepository implements DetalleRutinaRepository {
 
     @Override
     public DetalleRutinaDto guardarDetalleRutina(DetalleRutinaDto detalleRutinaDto) {
-        if (this.crudDetalleRutinaEntity.findByIdDetalleRutina(detalleRutinaDto.idDetalleRutina()) != null){
-            throw new DetalleRutinaYaExisteException(detalleRutinaDto.idDetalleRutina());
+        if (this.crudDetalleRutinaEntity.findByIdDetalleRutina(detalleRutinaDto.getIdDetalleRutina()) != null){
+            throw new DetalleRutinaYaExisteException(detalleRutinaDto.getIdDetalleRutina());
         }
 
         DetalleRutinaEntity detalleRutina = this.detalleRutinaMapper.toEntity(detalleRutinaDto);
