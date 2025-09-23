@@ -45,4 +45,84 @@ public class UsuarioDto {
 
     @DecimalMin(value = "0.0", message = "La masa corporal no puede ser negativa")
     BigDecimal masaCorpora;
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    public Sex getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sex sexo) {
+        this.sexo = sexo;
+    }
+
+    public BigDecimal getAltura() {
+        return altura;
+    }
+
+    public void setAltura(BigDecimal altura) {
+        this.altura = altura;
+    }
+
+    public BigDecimal getPeso() {
+        return peso;
+    }
+
+    public void setPeso(BigDecimal peso) {
+        this.peso = peso;
+    }
+
+    public BigDecimal getPesoDeseado() {
+        return pesoDeseado;
+    }
+
+    public void setPesoDeseado(BigDecimal pesoDeseado) {
+        this.pesoDeseado = pesoDeseado;
+    }
+
+    public Clasificacion getClasificacionImc() {
+        return clasificacionImc;
+    }
+
+    public void setClasificacionImc(Clasificacion clasificacionImc) {
+        this.clasificacionImc = clasificacionImc;
+    }
+
+    public Objetivo getObjetivoPersonal() {
+        return objetivoPersonal;
+    }
+
+    public void setObjetivoPersonal(Objetivo objetivoPersonal) {
+        this.objetivoPersonal = objetivoPersonal;
+    }
+
+    public BigDecimal getMasaCorpora() {
+        return masaCorpora;
+    }
+
+    public void setMasaCorpora(BigDecimal masaCorpora) {
+        this.masaCorpora = masaCorpora;
+    }
 }

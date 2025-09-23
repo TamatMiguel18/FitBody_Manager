@@ -41,4 +41,68 @@ public class DetalleRutinaDto{
     @Valid
     @NotNull(message = "La clasificación IMC es obligatoria")
     Clasificacion clasificacionImc;
+
+    public Long getIdDetalleRutina() {
+        return idDetalleRutina;
+    }
+
+    public void setIdDetalleRutina(Long idDetalleRutina) {
+        this.idDetalleRutina = idDetalleRutina;
+    }
+
+    public Integer getIdEjercicio() {
+        return idEjercicio;
+    }
+
+    public void setIdEjercicio(Integer idEjercicio) {
+        this.idEjercicio = idEjercicio;
+    }
+
+    public Integer getIdRutina() {
+        return idRutina;
+    }
+
+    public void setIdRutina(Integer idRutina) {
+        this.idRutina = idRutina;
+    }
+
+    public String getNombreRutina() {
+        return nombreRutina;
+    }
+
+    public void setNombreRutina(String nombreRutina) {
+        this.nombreRutina = nombreRutina;
+    }
+
+    public Dificultad getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(Dificultad dificultad) {
+        this.dificultad = dificultad;
+    }
+
+    public Duracion getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(Duracion duracion) {
+        this.duracion = duracion;
+    }
+
+    public Integer getFrecuencia() {
+        return frecuencia;
+    }
+
+    public void setFrecuencia(Integer frecuencia) {
+        this.frecuencia = frecuencia;
+    }
+
+    public Clasificacion getClasificacionImc() {
+        return clasificacionImc;
+    }
+
+    public void setClasificacionImc(Clasificacion clasificacionImc) {
+        this.clasificacionImc = clasificacionImc;
+    }
 }
