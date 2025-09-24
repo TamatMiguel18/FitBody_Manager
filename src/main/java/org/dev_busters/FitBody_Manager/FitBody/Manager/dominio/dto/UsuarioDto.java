@@ -2,8 +2,8 @@ package org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.ClasificacionImc;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Sex;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Clasificacion;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Objetivo;
 
 import java.math.BigDecimal;
@@ -33,7 +33,7 @@ public record UsuarioDto(
 
         @Valid
         @NotBlank(message = "La clasificación IMC es obligatoria")
-        ClasificacionImc clasificacionImc,
+        Clasificacion clasificacionImc,
 
         @Valid
         @NotBlank(message = "El objetivo personal es obligatorio")
