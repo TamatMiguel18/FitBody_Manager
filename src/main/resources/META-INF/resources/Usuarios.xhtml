@@ -67,6 +67,7 @@
                             </p:commandButton>
                             <p:commandButton value="Eliminar" icon="pi pi-trash"
                                              class="ui-button-danger"
+                                             process="@this"
                                              oncomplete="PF('ventanaEliminarUsuario').show()">
                                 <f:setPropertyActionListener value="#{usuario}" target="#{usuarioFormController.usuario}"/>
                             </p:commandButton>
