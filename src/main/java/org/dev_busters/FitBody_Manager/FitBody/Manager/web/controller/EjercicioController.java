@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ejercicios")
+@RequestMapping("/v1/ejercicios")
 @Tag(name = "Ejercicio", description = "Operaciones Crud Ejercicios")
 public class EjercicioController {
     private final EjercicioService ejercicioService;
