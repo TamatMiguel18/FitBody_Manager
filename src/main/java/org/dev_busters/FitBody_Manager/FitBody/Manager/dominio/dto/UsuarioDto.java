@@ -46,6 +46,10 @@ public class UsuarioDto {
     @DecimalMin(value = "0.0", message = "La masa corporal no puede ser negativa")
     BigDecimal masaCorpora;
 
+    public UsuarioDto() {
+
+    }
+
     public Long getIdUsuario() {
         return idUsuario;
     }
