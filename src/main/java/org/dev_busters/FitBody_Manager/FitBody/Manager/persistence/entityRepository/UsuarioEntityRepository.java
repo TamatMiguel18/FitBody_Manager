@@ -36,7 +36,7 @@ public class UsuarioEntityRepository implements UsuarioRepository {
 
     @Override
     public UsuarioDto guardarUsuario(UsuarioDto usuarioDto) {
-        if (this.crudUsuarioEntity.findFirstsByNombre(usuarioDto.getNombre()) != null) {
+        if (this.crudUsuarioEntity.findFirstByNombre(usuarioDto.getNombre()) != null) {
             throw new UsuarioYaExisteException(usuarioDto.getNombre());
         }
 
