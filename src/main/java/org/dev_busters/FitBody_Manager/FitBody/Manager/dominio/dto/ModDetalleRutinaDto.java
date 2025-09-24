@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Clasificacion;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.ClasificacionImc;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Dificultad;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Duracion;
 
@@ -26,7 +26,7 @@ public class ModDetalleRutinaDto{
     Integer frecuencia;
 
     @NotNull(message = "La clasificación IMC es obligatoria")
-    Clasificacion clasificacionImc;
+    ClasificacionImc clasificacionImc;
 
     public String getNombreRutina() {
         return nombreRutina;
@@ -60,11 +60,11 @@ public class ModDetalleRutinaDto{
         this.frecuencia = frecuencia;
     }
 
-    public Clasificacion getClasificacionImc() {
+    public ClasificacionImc getClasificacionImc() {
         return clasificacionImc;
     }
 
-    public void setClasificacionImc(Clasificacion clasificacionImc) {
+    public void setClasificacionImc(ClasificacionImc clasificacionImc) {
         this.clasificacionImc = clasificacionImc;
     }
 }

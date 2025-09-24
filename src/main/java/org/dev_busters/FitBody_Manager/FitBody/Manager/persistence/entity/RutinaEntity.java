@@ -13,9 +13,10 @@ public class RutinaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_rutina")
     private long idRutina;
 
-    @Column (length = 100, unique = true, nullable = false)
+    @Column (name = "nombre_rutina", length = 100, unique = true, nullable = false)
     private String nombreRutina;
 
     @Enumerated(EnumType.STRING)
@@ -30,7 +31,7 @@ public class RutinaEntity {
     private Integer frecuencia;
 
     @Enumerated(EnumType.STRING)
-    @Column (length = 150, nullable = false)
+    @Column (name = "clasificacion_imc", length = 150, nullable = false)
     private ClasificacionImc clasificacionImc;
 
     public long getIdRutina() {

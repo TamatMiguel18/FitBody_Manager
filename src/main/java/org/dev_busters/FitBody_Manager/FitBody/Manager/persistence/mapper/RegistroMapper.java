@@ -5,6 +5,7 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.RegistroDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.RegistroEntity;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.UsuarioEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import java.util.List;
