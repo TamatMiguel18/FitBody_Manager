@@ -7,9 +7,6 @@ VALUES ('Alessandro Zacarias', 17, 'Masculino', 1.75, 90.0, 85.0, 'Obesidad', 'E
 INSERT IGNORE INTO Registro(id_usuario, correo, contrasena)
 VALUES (1,'dlopez-@kina.edu.gt', 'pepito123');
 
-INSERT IGNORE INTO Registro(id_usuario, correo, contrasena)
-VALUES (2,'az@k.com', 'hola123');
-
 INSERT IGNORE INTO Ejercicio(nombre_ejercicio, descripcion, grupo_muscular, tipo_ejercicio, dificultad)
 VALUES ('Pushups', 'ejercicio con manos', 'PECHO', 'FUERZA', 'REGULAR');
 
