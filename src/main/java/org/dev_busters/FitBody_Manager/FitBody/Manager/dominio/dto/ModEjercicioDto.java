@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data // Genera getters, setters, toString, equals y hashCode
-@AllArgsConstructor // Genera un constructor con todos los campos
-@NoArgsConstructor // Genera un constructor sin argumentos
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ModEjercicioDto {
     @NotBlank(message = "Es obligatorio el nombre del ejercicio")
     String nombreEjercicio;

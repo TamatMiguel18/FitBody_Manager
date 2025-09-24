@@ -3,6 +3,7 @@ package org.dev_busters.FitBody_Manager.FitBody.Manager.web.controller;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+
 import jakarta.faces.view.ViewScoped;
 import lombok.Data;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.EjercicioDto;
@@ -38,24 +39,32 @@ public class EjercicioFrontendController implements Serializable {
     }
 
     public void guardarEjercicio() {
-
-        if (this.ejercicio.getNombreEjercicio() == null || this.ejercicio.getNombreEjercicio().describeConstable().isEmpty()) {
+        if (this.ejercicio.getIdEjercicio() == null) {
             this.ejercicioService.guardarEjercicio(this.ejercicio);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ejercicio agregado con exito"));
         } else {
-            this.ejercicioService.guardarEjercicio(this.ejercicio);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ejercicio actualizado"));
+            this.ejercicioService.modificarEjercicio(this.ejercicio.getIdEjercicio(), this.ejercicio);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ejercicio actualizado con exito"));
         }
-        PrimeFaces.current().executeScript("PF('ventanaModalEjercicios').hide()");
+
+        cargarDatos();
+
         PrimeFaces.current().ajax().update("formulario-ejercicios:mensaje-emergente", "formulario-ejercicios:tabla-ejercicios");
+        PrimeFaces.current().executeScript("PF('ventanaModalEjercicio').hide()");
+
         this.ejercicio = null;
     }
 
     public void eliminarEjercicio() {
-        this.ejercicioService.eliminarEjercicio(this.ejercicio.getNombreEjercicio());
-        this.listaEjercicios.remove(this.ejercicio);
-        this.ejercicio = null;
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ejercicio eliminado con exito"));
-        PrimeFaces.current().ajax().update("formulario-ejercicios:mensaje-emergente", "formulario-ejercicios:tabla-ejercicios");
+        if (this.ejercicio != null && this.ejercicio.getIdEjercicio() != null) {
+            this.ejercicioService.eliminarEjercicio(this.ejercicio.getIdEjercicio());
+            this.cargarDatos();
+            this.ejercicio = null;
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ejercicio eliminado con exito"));
+            PrimeFaces.current().ajax().update("formulario-ejercicios:mensaje-emergente", "formulario-ejercicios:tabla-ejercicios");
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "No se puede eliminar el ejercicio. El ID es nulo."));
+        }
     }
-}
+    }

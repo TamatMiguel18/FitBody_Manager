@@ -30,11 +30,18 @@ public class EjercicioService {
         return this.ejercicioRepository.guardarEjercicio(ejercicioDto);
     }
 
-    public EjercicioDto modificarEjercicio(Long idEjercicio, ModEjercicioDto modEjercicioDto){
+    public EjercicioDto modificarEjercicio(Long idEjercicio, ModEjercicioDto modEjercicioDto) {
         return this.ejercicioRepository.modificarEjercicio(idEjercicio, modEjercicioDto);
     }
 
     public void eliminarEjercicio(Long idEjercicio){
         this.ejercicioRepository.eliminarEjercicio(idEjercicio);
+    }
+
+    public void modificarEjercicio(EjercicioDto ejercicio) {
+    }
+
+    public void modificarEjercicio(Long idEjercicio, EjercicioDto ejercicio) {
+        this.ejercicioRepository.modificarEjercicio(idEjercicio, ejercicio);
     }
 }
