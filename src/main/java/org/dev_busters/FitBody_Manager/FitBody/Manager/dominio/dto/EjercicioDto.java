@@ -5,63 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data // Genera getters, setters, toString, equals y hashCode
-@AllArgsConstructor // Genera un constructor con todos los campos
-@NoArgsConstructor // Genera un constructor sin argumentos
-public class EjercicioDto {
-        Long idEjercicio;
-        @NotBlank(message = "Es obligatorio el nombre del ejercicio")
-        String nombreEjercicio;
+import java.io.Serializable;
 
-        @NotBlank(message = "Es obligatoria la descripcion del ejercicio")
-        String descripcion;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class EjercicioDto implements Serializable {
 
-        @NotBlank(message = "Es obligatorio el grupo muscular del ejercicio")
-        String grupoMuscular;
+    private Long idEjercicio;
 
-        @NotBlank(message = "Es obligatorio el tipo de ejercicio")
-        String tipoEjercicio;
+    @NotBlank(message = "Es obligatorio el nombre del ejercicio")
+    private String nombreEjercicio;
 
-        @NotBlank(message = "Es obligatoria la dificultad del ejercicio")
-        String dificultad;
+    @NotBlank(message = "Es obligatoria la descripcion del ejercicio")
+    private String descripcion;
 
-        public String getNombreEjercicio() {
-                return nombreEjercicio;
-        }
+    @NotBlank(message = "Es obligatorio el grupo muscular del ejercicio")
+    private String grupoMuscular;
 
-        public void setNombreEjercicio(String nombreEjercicio) {
-                this.nombreEjercicio = nombreEjercicio;
-        }
+    @NotBlank(message = "Es obligatorio el tipo de ejercicio")
+    private String tipoEjercicio;
 
-        public String getDescripcion() {
-                return descripcion;
-        }
+    @NotBlank(message = "Es obligatoria la dificultad del ejercicio")
+    private String dificultad;
 
-        public void setDescripcion(String descripcion) {
-                this.descripcion = descripcion;
-        }
-
-        public String getGrupoMuscular() {
-                return grupoMuscular;
-        }
-
-        public void setGrupoMuscular(String grupoMuscular) {
-                this.grupoMuscular = grupoMuscular;
-        }
-
-        public String getTipoEjercicio() {
-                return tipoEjercicio;
-        }
-
-        public void setTipoEjercicio(String tipoEjercicio) {
-                this.tipoEjercicio = tipoEjercicio;
-        }
-
-        public String getDificultad() {
-                return dificultad;
-        }
-
-        public void setDificultad(String dificultad) {
-                this.dificultad = dificultad;
-        }
 }
