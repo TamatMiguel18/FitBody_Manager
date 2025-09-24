@@ -9,7 +9,6 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.crud.CrudUsua
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity.UsuarioEntity;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.mapper.UsuarioMapper;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.repository.UsuarioRepository;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -36,8 +35,8 @@ public class UsuarioEntityRepository implements UsuarioRepository {
     }
 
     @Override
-    public UsuarioDto guardarUsuario(@NotNull UsuarioDto usuarioDto) {
-        if (this.crudUsuarioEntity.findFirstByNombre(usuarioDto.getNombre()) != null) {
+    public UsuarioDto guardarUsuario(UsuarioDto usuarioDto) {
+        if (this.crudUsuarioEntity.findFirstsByNombre(usuarioDto.getNombre()) != null) {
             throw new UsuarioYaExisteException(usuarioDto.getNombre());
         }
 

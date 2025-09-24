@@ -12,8 +12,16 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", uses = UsuarioMapper.class) //Para poder tomar el objeto y pasarlo al dto de Registro
 public interface RegistroMapper {
+    @Mapping(source = "idRegistro", target = "idRegistro")
+    @Mapping(source = "usuario", target = "usuario")
+    @Mapping(source = "correo", target = "correo")
+    @Mapping(source = "contrasena", target = "contrasena")
     RegistroDto toDto(RegistroEntity registroEntity);
     List<RegistroDto> toDto(Iterable<RegistroEntity> entities);
+    @Mapping(source = "idRegistro", target = "idRegistro")
+    @Mapping(source = "usuario", target = "usuario")
+    @Mapping(source = "correo", target = "correo")
+    @Mapping(source = "contrasena", target = "contrasena")
     RegistroEntity toEntity(RegistroDto usuarioRegistroDto);
     void modificarEntityFromDto(ModRegistroDto modRegistroDto, @MappingTarget RegistroEntity registroEntity);
 }
