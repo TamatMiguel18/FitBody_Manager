@@ -2,11 +2,30 @@ package org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-public record ModRegistroDto(
-        @NotNull(message = "El nuevo correo no puede estar vacio")
-        String correo,
-        @NotBlank(message = "La contrasena no puede estar vacia")
-        String contrasena
-) {
+@Data
+@AllArgsConstructor
+public class ModRegistroDto{
+    @NotNull(message = "El nuevo correo no puede estar vacio")
+    String correo;
+    @NotBlank(message = "La contrasena no puede estar vacia")
+    String contrasena;
+
+    public @NotNull(message = "El nuevo correo no puede estar vacio") String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(@NotNull(message = "El nuevo correo no puede estar vacio") String correo) {
+        this.correo = correo;
+    }
+
+    public @NotBlank(message = "La contrasena no puede estar vacia") String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(@NotBlank(message = "La contrasena no puede estar vacia") String contrasena) {
+        this.contrasena = contrasena;
+    }
 }

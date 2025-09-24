@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<h:html xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Ejercicios</title>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+    </h:head>
+    <body>
+    <div class="card">
+        <h:form id="formulario-ejercicios">
+            <p:growl id="mensaje-emergente" showDetail="true"/>
+            <div>
+                <p:menubar>
+                    <p:menuitem value="Agregar Ejercicio" icon="pi pi-fw pi-plus"
+                                actionListener="#{ejercicioFormController.agregarEjercicio}"
+                                update=":formulario-modal:ventana-ejercicio"
+                                oncomplete="PF('ventanaModalEjercicio').show()"/>
+                </p:menubar>
+            </div>
+            <div class="card">
+                <p:dataTable value="#{ejercicioFormController.listaEjercicios}" var="ejercicio"
+                             id="tabla-ejercicios" widgetVar="ejercicioTabla">
+
+                    <f:facet name="header">
+                        <div class="flex justify-content-center
+                                        flex-wrap card-container yellow-container">
+                            <div class="flex align-items-center justify-content-center
+                                            w-20rem h4rem bg-yellow-500 font-bold m-2
+                                            text-gray-900 border-round">
+                                <h3>Ejercicios</h3>
+                            </div>
+                        </div>
+                    </f:facet>
+                    <p:column headerText="ID">
+                        <h:outputText value="#{ejercicio.idEjercicio}"/>
+                    </p:column>
+                    <p:column headerText="Nombre Ejercicio">
+                        <h:outputText value="#{ejercicio.nombreEjercicio}"/>
+                    </p:column>
+                    <p:column headerText="Descripcion">
+                        <h:outputText value="#{ejercicio.descripcion}"/>
+                    </p:column>
+                    <p:column headerText="Grupo Muscular">
+                        <h:outputText value="#{ejercicio.grupoMuscular}"/>
+                    </p:column>
+                    <p:column headerText="Tipo Ejercicio">
+                        <h:outputText value="#{ejercicio.tipoEjercicio}"/>
+                    </p:column>
+                    <p:column headerText="Dificultad">
+                        <h:outputText value="#{ejercicio.dificultad}"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:commandButton value="Editar" icon="pi pi-pencil"
+                                         update=":formulario-modal:ventana-ejercicio"
+                                         process="@this"
+                                         oncomplete="PF('ventanaModalEjercicio').show()"
+                                         class="ui-button-primary"
+                                         style="margin-right:.5rem">
+                            <f:setPropertyActionListener
+                                    value="#{ejercicio}"
+                                    target="#{ejercicioFormController.ejercicio}"/>
+                        </p:commandButton>
+                        <p:commandButton value="Eliminar" icon="pi pi-trash"
+                                         class="ui-button-danger"
+                                         process="@this"
+                                         oncomplete="PF('ventanaEliminarEjercicio').show()">
+                            <f:setPropertyActionListener
+                                    value="#{ejercicio}"
+                                    target="#{ejercicioFormController.ejercicio}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+
+        <h:form id="formulario-modal">
+            <p:dialog header="Detalle de Ejercicio" showEffect="fade" modal="true" widgetVar="ventanaModalEjercicio" responsive="true">
+                <p:outputPanel id="ventana-ejercicio" class="ui-fluid">
+                    <div class="field">
+                        <p:outputLabel for="nombreEjercicio">Nombre Ejercicio</p:outputLabel>
+                        <p:inputText id="nombreEjercicio"
+                                     value="#{ejercicioFormController.ejercicio.nombreEjercicio}"
+                                     required="true"/>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="descripcion">Descripcion</p:outputLabel>
+                        <p:inputText id="descripcion"
+                                     value="#{ejercicioFormController.ejercicio.descripcion}"
+                                     required="true"/>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="grupoMuscular">Grupo Muscular</p:outputLabel>
+                        <p:inputText id="grupoMuscular"
+                                     value="#{ejercicioFormController.ejercicio.grupoMuscular}"
+                                     required="true"/>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="tipoEjercicio">Tipo Ejercicio</p:outputLabel>
+                        <p:inputText id="tipoEjercicio"
+                                     value="#{ejercicioFormController.ejercicio.tipoEjercicio}"
+                                     required="true"/>
+                    </div>
+                    <div class="field">
+                        <p:outputLabel for="dificultad">Dificultad</p:outputLabel>
+                        <p:inputText id="dificultad"
+                                     value="#{ejercicioFormController.ejercicio.dificultad}"
+                                     required="true"/>
+                    </div>
+                </p:outputPanel>
+                <f:facet name="footer">
+                    <p:commandButton value="Guardar" icon="pi pi-check"
+                                     process="ventana-ejercicio @this"
+                                     actionListener="#{ejercicioFormController.guardarEjercicio}"
+                                     update=":formulario-ejercicios:tabla-ejercicios :formulario-modal:ventana-ejercicio"
+                                     oncomplete="PF('ventanaModalEjercicio').hide()"/>
+                    <p:commandButton value="Cancelar" icon="pi pi-times"
+                                     oncomplete="PF('ventanaModalEjercicio').hide()"
+                                     class="ui-button-secondary" type="button"/>
+                </f:facet>
+            </p:dialog>
+            <p:confirmDialog widgetVar="ventanaEliminarEjercicio"
+                             showEffect="fade" width="300"
+                             message="¿Estas seguro de eliminar este ejercicio?"
+                             header="Confirmar" severity="warn">
+                <p:commandButton value="Si" icon="pi pi-check"
+                                 process="@this"
+                                 actionListener="#{ejercicioFormController.eliminarEjercicio}"
+                                 oncomplete="PF('ventanaEliminarEjercicio').hide()"/>
+                <p:commandButton value="No" icon="pi pi-times"
+                                 onclick="PF('ventanaEliminarEjercicio').hide()"
+                                 styleClass="ui-button-secondary" type="button"/>
+            </p:confirmDialog>
+        </h:form>
+    </div>
+    </body>
+</h:html>

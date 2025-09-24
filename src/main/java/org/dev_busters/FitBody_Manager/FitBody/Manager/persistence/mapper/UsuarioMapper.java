@@ -1,3 +1,4 @@
+
 package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.mapper;
 
 
@@ -13,9 +14,31 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {
+    @Mapping(source = "idUsuario", target = "idUsuario")
+    @Mapping(source = "nombre", target = "nombre")
+    @Mapping(source = "edad", target = "edad")
+    @Mapping(source = "sexo", target = "sexo")
+    @Mapping(source = "altura", target = "altura")
+    @Mapping(source = "peso", target = "peso")
+    @Mapping(source = "pesoDeseado", target = "pesoDeseado")
+    @Mapping(source = "clasificacionImc", target = "clasificacionImc")
+    @Mapping(source = "objetivoPersonal", target = "objetivoPersonal")
+    @Mapping(source = "masaCorporal", target = "masaCorporal")
     UsuarioDto toDto(UsuarioEntity entity);
 
     List<UsuarioDto> toDto(Iterable<UsuarioEntity> entities);
+
+    @Mapping(source = "idUsuario", target = "idUsuario")
+    @Mapping(source = "nombre", target = "nombre")
+    @Mapping(source = "edad", target = "edad")
+    @Mapping(source = "sexo", target = "sexo")
+    @Mapping(source = "altura", target = "altura")
+    @Mapping(source = "peso", target = "peso")
+    @Mapping(source = "pesoDeseado", target = "pesoDeseado")
+    @Mapping(source = "clasificacionImc", target = "clasificacionImc")
+    @Mapping(source = "objetivoPersonal", target = "objetivoPersonal")
+    @Mapping(source = "masaCorporal", target = "masaCorporal")
     UsuarioEntity toEntity(UsuarioDto dto);
+
     void modificarEntityFromDto(ModUsuarioDto modUsuarioDto, @MappingTarget UsuarioEntity entity);
 }

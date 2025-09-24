@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Dificultad;
-import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.grupoMuscular;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.GrupoMuscular;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.tipoEjercicio;
 
 @Entity
@@ -17,7 +17,7 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.tipoEjercic
 public class EjercicioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idEjercicio;
+    private Long idEjercicio;
 
     @Column(length = 64, nullable = false)
     private String nombreEjercicio;
@@ -26,7 +26,7 @@ public class EjercicioEntity {
     private String descripcion;
 
     @Enumerated(EnumType.STRING)
-    private grupoMuscular grupoMuscular;
+    private GrupoMuscular grupoMuscular;
 
     @Enumerated(EnumType.STRING)
     private tipoEjercicio tipoEjercicio;
@@ -34,11 +34,11 @@ public class EjercicioEntity {
     @Enumerated(EnumType.STRING)
     private Dificultad dificultad;
 
-    public int getIdEjercicio() {
+    public Long getIdEjercicio() {
         return idEjercicio;
     }
 
-    public void setIdEjercicio(int idEjercicio) {
+    public void setIdEjercicio(Long idEjercicio) {
         this.idEjercicio = idEjercicio;
     }
 
@@ -58,11 +58,11 @@ public class EjercicioEntity {
         this.descripcion = descripcion;
     }
 
-    public org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.grupoMuscular getGrupoMuscular() {
+    public org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.GrupoMuscular getGrupoMuscular() {
         return grupoMuscular;
     }
 
-    public void setGrupoMuscular(org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.grupoMuscular grupoMuscular) {
+    public void setGrupoMuscular(org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.GrupoMuscular grupoMuscular) {
         this.grupoMuscular = grupoMuscular;
     }
 

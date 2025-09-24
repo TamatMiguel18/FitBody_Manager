@@ -39,12 +39,11 @@ public class RegistroEntityRepository implements RegistroRepository {
 
     @Override
     public RegistroDto guardarRegistro(RegistroDto registro) {
-        if (this.crudRegistroEntity.findFirstByCorreo(registro.correo()) != null){
-            throw new RegistroYaExiste(registro.correo());
+        if (this.crudRegistroEntity.findFirstByCorreo(registro.getCorreo()) != null){
+            throw new RegistroYaExiste(registro.getCorreo());
         }
         RegistroEntity registroEntity = this.registroMapper.toEntity(registro);
-
-        Long idUsuario = registro.usuario().idUsuario();
+        Long idUsuario = registro.getUsuario().getIdUsuario();
         UsuarioEntity usuario = crudUsuarioEntity.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id " + idUsuario));
         registroEntity.setUsuario(usuario);
@@ -55,8 +54,8 @@ public class RegistroEntityRepository implements RegistroRepository {
     @Override
     public RegistroDto modificarRegistro(Long idRegistro, ModRegistroDto modRegistro) {
         RegistroEntity registroEntity = this.crudRegistroEntity.findById(idRegistro).orElse(null);
-        registroEntity.setCorreo(modRegistro.correo());
-        registroEntity.setContrasena(modRegistro.contrasena());
+        registroEntity.setCorreo(modRegistro.getCorreo());
+        registroEntity.setContrasena(modRegistro.getContrasena());
 
         if (registroEntity == null){
             throw new RegistroNotFound(idRegistro);

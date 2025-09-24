@@ -46,8 +46,8 @@ public class UsuarioController {
             })
 
     public ResponseEntity<UsuarioDto> buscarPorId
-         (@Parameter(description = "Identificador del usuario a recuperar", example = "1")
-            @PathVariable Long Id) {
+    (@Parameter(description = "Identificador del usuario a recuperar", example = "1")
+     @PathVariable Long Id) {
         return ResponseEntity.ok(this.usuarioService.buscarPorId(Id));
     }
 
@@ -74,4 +74,3 @@ public class UsuarioController {
         return ResponseEntity.ok().build();
     }
 }
-

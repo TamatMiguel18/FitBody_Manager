@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface CrudUsuarioEntity
         extends CrudRepository<UsuarioEntity, Long> {
     //Se crea el acceso al CRUD de mi entidad
-    UsuarioEntity findFirstsByNombre(String nombre);
+    UsuarioEntity findFirstByNombre(String nombre);
 }

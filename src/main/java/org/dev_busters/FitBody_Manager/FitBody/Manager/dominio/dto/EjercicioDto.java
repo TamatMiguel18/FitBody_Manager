@@ -1,21 +1,32 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record EjercicioDto (
-        @NotBlank(message = "Es obligatorio el nombre del ejercicio")
-        String nombreEjercicio,
+import java.io.Serializable;
 
-        @NotBlank(message = "Es obligatoria la descripcion del ejercicio")
-        String descripcion,
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class EjercicioDto implements Serializable {
 
-        @NotBlank(message = "Es obligatorio el grupo muscular del ejercicio")
-        String grupoMuscular,
+    private Long idEjercicio;
 
-        @NotBlank(message = "Es obligatorio el tipo de ejercicio")
-        String tipoEjercicio,
+    @NotBlank(message = "Es obligatorio el nombre del ejercicio")
+    private String nombreEjercicio;
 
-        @NotBlank(message = "Es obligatoria la dificultad del ejercicio")
-        String dificultad
-){
+    @NotBlank(message = "Es obligatoria la descripcion del ejercicio")
+    private String descripcion;
+
+    @NotBlank(message = "Es obligatorio el grupo muscular del ejercicio")
+    private String grupoMuscular;
+
+    @NotBlank(message = "Es obligatorio el tipo de ejercicio")
+    private String tipoEjercicio;
+
+    @NotBlank(message = "Es obligatoria la dificultad del ejercicio")
+    private String dificultad;
+
 }

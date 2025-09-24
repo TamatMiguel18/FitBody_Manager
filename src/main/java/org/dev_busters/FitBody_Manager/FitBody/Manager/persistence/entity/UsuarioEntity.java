@@ -2,6 +2,10 @@ package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.ClasificacionImc;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Objetivo;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Sex;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -19,8 +23,8 @@ public class UsuarioEntity {
     @Column(name = "edad", nullable = false)
     private Integer edad;
 
-    @Column(name = "sexo", nullable = false)
-    private String sexo;
+    @Enumerated(EnumType.STRING)
+    private Sex sexo;
 
     @Column(name = "altura", precision = 10, scale = 2, nullable = false)
     private BigDecimal altura;
@@ -31,11 +35,11 @@ public class UsuarioEntity {
     @Column(name = "peso_deseado", precision = 10, scale = 2, nullable = false)
     private BigDecimal pesoDeseado;
 
-    @Column(name = "clasificacion_imc", nullable = false)
-    private String clasificacionImc;
+    @Enumerated(EnumType.STRING)
+    private ClasificacionImc clasificacionImc;
 
-    @Column(name = "objetivo_personal", nullable = false)
-    private String objetivoPersonal;
+    @Enumerated(EnumType.STRING)
+    private Objetivo objetivoPersonal;
 
     @Column(name = "masa_corporal", precision = 10, scale = 2, nullable = false)
     private BigDecimal masaCorporal;
