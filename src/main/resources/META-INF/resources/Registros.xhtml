@@ -11,14 +11,6 @@
             <h:form id="formulario-registros">
                 <p:growl id="mensaje-emergente" showDetails="true"/>
 
-                <div>
-                    <p:menubar>
-                        <p:menuitem value="Agregar Registro" icon="pi pi-fw pi-plus"
-                                    actionListener="#{registroFormController.agregarRegistro}"
-                                    update=":formulario-modal:ventana-registro"
-                                    oncomplete="PF('ventanaModalRegistros').show()"/>
-                    </p:menubar>
-                </div>
 
                 <div class="card">
                     <p:dataTable value="#{registroFormController.listaRegistros}" var="registro"
@@ -38,11 +30,11 @@
                         <p:column headerText="ID">
                             <h:outputText value="#{registro.idRegistro}"/>
                         </p:column>
+                        <p:column headerText="USUARIO">
+                            <h:outputText value="#{registro.usuario.nombre}"/>
+                        </p:column>
                         <p:column headerText="CORREO">
                             <h:outputText value="#{registro.correo}"/>
-                        </p:column>
-                        <p:column headerText="CONTRASEÑA">
-                            <h:outputText value="#{registro.contrasena}"/>
                         </p:column>
 
                         <p:column>
