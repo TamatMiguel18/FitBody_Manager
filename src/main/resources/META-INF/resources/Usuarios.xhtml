@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<h:html xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Gestión de Usuarios</title>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+    </h:head>
+    <h:body>
+        <div class="card">
+            <h:form id="formulario-usuarios">
+                <p:growl id="mensaje-emergente" showDetails="true"/>
+
+                <div>
+                    <p:menubar>
+                        <p:menuitem value="Agregar Usuario" icon="pi pi-fw pi-plus"
+                                    actionListener="#{usuarioFormController.agregarUsuario}"
+                                    update=":formulario-modal:ventana-usuario"
+                                    oncomplete="PF('ventanaModalUsuarios').show()"/>
+                    </p:menubar>
+                </div>
+
+                <div class="card">
+                    <p:dataTable value="#{usuarioFormController.listaUsuarios}" var="usuario"
+                                 id="tabla-usuarios" widgetVar="usuarioTabla">
+
+                        <f:facet name="header">
+                            <div class="flex justify-content-center
+                                         flex-wrap card-container yellow-container">
+                                <div class="flex align-items-center justify-content-center
+                                             w-20rem h4rem bg-yellow-500 font-bold m-2
+                                             text-gray-900 border-round">
+                                    <h3>Registro de Usuarios</h3>
+                                </div>
+                            </div>
+                        </f:facet>
+
+                        <p:column headerText="ID">
+                            <h:outputText value="#{usuario.idUsuario}"/>
+                        </p:column>
+                        <p:column headerText="NOMBRE">
+                            <h:outputText value="#{usuario.nombre}"/>
+                        </p:column>
+                        <p:column headerText="EDAD">
+                            <h:outputText value="#{usuario.edad}"/>
+                        </p:column>
+                        <p:column headerText="SEXO">
+                            <h:outputText value="#{usuario.sexo}"/>
+                        </p:column>
+                        <p:column headerText="PESO">
+                            <h:outputText value="#{usuario.peso}"/>
+                        </p:column>
+                        <p:column headerText="CLASIFICACIÓN IMC">
+                            <h:outputText value="#{usuario.clasificacionImc}"/>
+                        </p:column>
+
+                        <p:column>
+                            <p:commandButton value="Editar" icon="pi pi-pencil"
+                                             update=":formulario-modal:ventana-usuario"
+                                             process="@this"
+                                             oncomplete="PF('ventanaModalUsuarios').show()"
+                                             class="ui-button-primary"
+                                             style="margin-right:.5rem">
+                                <f:setPropertyActionListener
+                                        value="#{usuario}"
+                                        target="#{usuarioFormController.usuario}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Eliminar" icon="pi pi-trash"
+                                             class="ui-button-danger"
+                                             process="@this"
+                                             oncomplete="PF('ventanaEliminarUsuario').show()">
+                                <f:setPropertyActionListener
+                                        value="#{usuario}"
+                                        target="#{usuarioFormController.usuario}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </h:form>
+
+            <h:form id="formulario-modal">
+                <p:dialog header="Detalle de Usuario" showEffect="fade" modal="true" widgetVar="ventanaModalUsuarios" responsive="true">
+                    <p:outputPanel id="ventana-usuario" class="ui-fluid">
+                        <div class="field">
+                            <p:outputLabel for="nombre">Nombre</p:outputLabel>
+                            <p:inputText id="nombre"
+                                         value="#{usuarioFormController.usuario.nombre}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="edad">Edad</p:outputLabel>
+                            <p:inputText id="edad"
+                                         value="#{usuarioFormController.usuario.edad}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="sexo">Sexo</p:outputLabel>
+                            <p:selectOneMenu id="sexo" value="#{usuarioFormController.usuario.sexo}" required="true">
+                                <f:selectItems value="#{sex.values()}" var="s" itemLabel="#{s}" itemValue="#{s}" />
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="altura">Altura</p:outputLabel>
+                            <p:inputText id="altura"
+                                         value="#{usuarioFormController.usuario.altura}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="peso">Peso</p:outputLabel>
+                            <p:inputText id="peso"
+                                         value="#{usuarioFormController.usuario.peso}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="pesoDeseado">Peso Deseado</p:outputLabel>
+                            <p:inputText id="pesoDeseado"
+                                         value="#{usuarioFormController.usuario.pesoDeseado}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="clasificacionImc">Clasificación IMC</p:outputLabel>
+                            <p:selectOneMenu id="clasificacionImc" value="#{usuarioFormController.usuario.clasificacionImc}" required="true">
+                                <f:selectItems value="#{clasificacion.values()}" var="c" itemLabel="#{c}" itemValue="#{c}" />
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="objetivoPersonal">Objetivo Personal</p:outputLabel>
+                            <p:selectOneMenu id="objetivoPersonal" value="#{usuarioFormController.usuario.objetivoPersonal}" required="true">
+                                <f:selectItems value="#{objetivo.values()}" var="o" itemLabel="#{o}" itemValue="#{o}" />
+                            </p:selectOneMenu>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="masaCorporal">Masa Corporal</p:outputLabel>
+                            <p:inputText id="masaCorporal"
+                                         value="#{usuarioFormController.usuario.masaCorpora}"
+                                         required="true"/>
+                        </div>
+                    </p:outputPanel>
+                    <f:facet name="footer">
+                        <p:commandButton value="Guardar" icon="pi pi-check"
+                                         process="ventana-usuario @this"
+                                         actionListener="#{usuarioFormController.guardarUsuario}"
+                                         update=":formulario-usuarios:tabla-usuarios :formulario-modal:ventana-usuario"
+                                         oncomplete="PF('ventanaModalUsuarios').hide()"/>
+                        <p:commandButton value="Cancelar" icon="pi pi-times"
+                                         oncomplete="PF('ventanaModalUsuarios').hide()"
+                                         class="ui-button-secondary" type="button"/>
+                    </f:facet>
+                </p:dialog>
+                <p:confirmDialog widgetVar="ventanaEliminarUsuario"
+                                 showEffect="fade" width="300"
+                                 message="¿Estás seguro de eliminar este usuario?"
+                                 header="Confirmar" severity="warn">
+                    <p:commandButton value="Si" icon="pi pi-check"
+                                     process="@this"
+                                     actionListener="#{usuarioFormController.eliminarUsuario}"
+                                     oncomplete="PF('ventanaEliminarUsuario').hide()"/>
+                    <p:commandButton value="No" icon="pi pi-times"
+                                     onclick="PF('ventanaEliminarUsuario').hide()"
+                                     styleClass="ui-button-secondary" type="button"/>
+                </p:confirmDialog>
+            </h:form>
+        </div>
+    </h:body>
+</h:html>
