@@ -36,8 +36,8 @@ public class ejercicioEntityRepository implements EjercicioRepository {
 
     @Override
     public EjercicioDto guardarEjercicio(EjercicioDto ejercicioDto){
-        if (this.crudEjercicioEntity.findByNombreEjercicio(ejercicioDto.nombreEjercicio()) !=null) {
-            throw new EjercicioYaExisteExeption(ejercicioDto.nombreEjercicio());
+        if (this.crudEjercicioEntity.findByNombreEjercicio(ejercicioDto.getNombreEjercicio()) !=null) {
+            throw new EjercicioYaExisteExeption(ejercicioDto.getNombreEjercicio());
         }
         EjercicioEntity ejercicio = new EjercicioEntity();
         ejercicio = this.ejercicioMapper.toEntity(ejercicioDto);

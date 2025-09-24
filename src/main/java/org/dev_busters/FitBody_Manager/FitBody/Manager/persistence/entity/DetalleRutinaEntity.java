@@ -7,20 +7,20 @@ import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Dificultad;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Duracion;
 
 @Entity
-@Table(name = "DetalleRutina")
+@Table(name = "detalle_rutina")
 @Data
 public class DetalleRutinaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idDetalleRutina;
+    private Long idDetalleRutina;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idEjercicio", nullable = false)
+    @JoinColumn(name = "id_ejercicio", nullable = false)
     private EjercicioEntity ejercicio;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idRutina", nullable = false)
+    @JoinColumn(name = "id_rutina", nullable = false)
     private RutinaEntity rutina;
 
     @Column(length = 64, nullable = false)

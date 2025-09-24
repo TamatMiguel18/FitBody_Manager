@@ -1,13 +1,17 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class DetalleRutinaDto{
-        Long idDetallerRunina;
+        Long idDetalleRutina;
+        RutinaDto rutina;
+        EjercicioDto ejercicio;
         String nombreRutina;
         String dificultad;
         String duracion;
@@ -15,11 +19,11 @@ public class DetalleRutinaDto{
         String clasificacionImc;
 
     public Long getIdDetallerRunina() {
-        return idDetallerRunina;
+        return idDetalleRutina;
     }
 
     public void setIdDetallerRunina(Long idDetallerRunina) {
-        this.idDetallerRunina = idDetallerRunina;
+        this.idDetalleRutina = idDetallerRunina;
     }
 
     public String getNombreRutina() {
@@ -60,5 +64,31 @@ public class DetalleRutinaDto{
 
     public void setClasificacionImc(String clasificacionImc) {
         this.clasificacionImc = clasificacionImc;
+    }
+
+    public Long getIdDetalleRutina() {
+        return idDetalleRutina;
+    }
+
+    public void setIdDetallerRutina(Long idDetalleRutina) {
+        this.idDetalleRutina = idDetalleRutina;
+    }
+
+    public RutinaDto getId_rutina() {
+        return rutina;
+    }
+
+    public RutinaDto setId_rutina(RutinaDto id_rutina) {
+        this.rutina = id_rutina;
+        return id_rutina;
+    }
+
+    public EjercicioDto getId_ejercicio() {
+        return ejercicio;
+    }
+
+    public EjercicioDto setId_ejercicio(EjercicioDto id_ejercicio) {
+        this.ejercicio = id_ejercicio;
+        return id_ejercicio;
     }
 }

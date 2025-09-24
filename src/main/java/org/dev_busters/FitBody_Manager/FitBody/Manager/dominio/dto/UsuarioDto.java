@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Sex;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.ClasificacionImc;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Objetivo;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class UsuarioDto {
     Long idUsuario;
 

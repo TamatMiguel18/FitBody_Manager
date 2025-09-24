@@ -6,6 +6,8 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import lombok.Data;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.DetalleRutinaDto;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.EjercicioDto;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.RutinaDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.service.DetalleRutinaService;
 import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class DetalleRutinaFrontendController implements Serializable {
 
     @PostConstruct
     public void init() {
+        this.detalleRutina = new DetalleRutinaDto();
+        this.detalleRutina.setRutina(new RutinaDto());
+        this.detalleRutina.setEjercicio(new EjercicioDto());
         cargarDatos();
     }
 
@@ -36,6 +41,9 @@ public class DetalleRutinaFrontendController implements Serializable {
 
     public void agregarDetalleRutina() {
         this.detalleRutina = new DetalleRutinaDto();
+        this.detalleRutina.setRutina(new RutinaDto());
+        this.detalleRutina.setEjercicio(new EjercicioDto());
+        cargarDatos();
     }
 
     public void guardarDetalleRutina() {

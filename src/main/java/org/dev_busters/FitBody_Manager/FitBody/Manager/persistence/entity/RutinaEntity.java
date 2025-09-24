@@ -14,24 +14,25 @@ public class RutinaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rutina")
-    private long idRutina;
+    private Long idRutina;
 
     @Column (name = "nombre_rutina", length = 100, unique = true, nullable = false)
     private String nombreRutina;
 
-    @Enumerated(EnumType.STRING)
-    @Column (length = 40, nullable = false)
-    private Dificultad dificultad;
-
-    @Enumerated(EnumType.STRING)
-    @Column (length = 150, nullable = false)
-    private Duracion duracion;
-
     @Column (length = 150, nullable = false)
     private Integer frecuencia;
 
+
     @Enumerated(EnumType.STRING)
-    @Column (name = "clasificacion_imc", length = 150, nullable = false)
+    @Column(nullable = false)
+    private Dificultad dificultad;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Duracion duracion;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "clasificacion_imc", nullable = false)
     private ClasificacionImc clasificacionImc;
 
     public long getIdRutina() {
