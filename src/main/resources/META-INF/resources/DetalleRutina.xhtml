@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<h:html xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Gestión de Detalles de Rutina</title>
+        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>
+    </h:head>
+
+    <h:body>
+        <div class="card">
+            <h:form id="formulario-detalle-rutina">
+                <p:growl id="mensaje-emergente" showDetails="true"/>
+
+                <div>
+                    <p:menubar>
+                        <p:menuitem value="Agregar Detalle de Rutina" icon="pi pi-fw pi-plus"
+                                    actionListener="#{detalleRutinaFormController.agregarDetalleRutina}"
+                                    update=":formulario-modal:ventana-detalle-rutina"
+                                    oncomplete="PF('ventanaModalDetalleRutina').show()"/>
+                    </p:menubar>
+                </div>
+
+                <div class="card">
+                    <p:dataTable value="#{detalleRutinaFormController.listaDetalleRutinas}" var="detalle"
+                                 id="tabla-detalle-rutina" widgetVar="detalleTabla">
+
+                        <f:facet name="header">
+                            <div class="flex justify-content-center flex-wrap card-container yellow-container">
+                                <div class="flex align-items-center justify-content-center
+                                            w-20rem h4rem bg-yellow-500 font-bold m-2
+                                            text-gray-900 border-round">
+                                    <h3>Detalles de Rutina</h3>
+                                </div>
+                            </div>
+                        </f:facet>
+
+                        <p:column headerText="ID">
+                            <h:outputText value="#{detalle.idDetallerRunina}" />
+                        </p:column>
+                        <p:column headerText="Nombre Rutina">
+                            <h:outputText value="#{detalle.nombreRutina}" />
+                        </p:column>
+                        <p:column headerText="Dificultad">
+                            <h:outputText value="#{detalle.dificultad}" />
+                        </p:column>
+                        <p:column headerText="Duración">
+                            <h:outputText value="#{detalle.duracion}" />
+                        </p:column>
+                        <p:column headerText="Frecuencia">
+                            <h:outputText value="#{detalle.frecuencia}" />
+                        </p:column>
+                        <p:column headerText="Clasificación IMC">
+                            <h:outputText value="#{detalle.clasificacionImc}" />
+                        </p:column>
+
+                        <p:column>
+                            <p:commandButton value="Editar" icon="pi pi-pencil"
+                                             update=":formulario-modal:ventana-detalle-rutina"
+                                             process="@this"
+                                             oncomplete="PF('ventanaModalDetalleRutina').show()"
+                                             class="ui-button-primary"
+                                             style="margin-right:.5rem">
+                                <f:setPropertyActionListener
+                                        value="#{detalle}"
+                                        target="#{detalleRutinaFormController.detalleRutina}"/>
+                            </p:commandButton>
+                            <p:commandButton value="Eliminar" icon="pi pi-trash"
+                                             class="ui-button-danger"
+                                             process="@this"
+                                             oncomplete="PF('ventanaEliminarDetalleRutina').show()">
+                                <f:setPropertyActionListener
+                                        value="#{detalle}"
+                                        target="#{detalleRutinaFormController.detalleRutina}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </h:form>
+
+            <!-- Modal de Guardado/Edición -->
+            <h:form id="formulario-modal">
+                <p:dialog header="Detalle de Rutina" showEffect="fade" modal="true"
+                          widgetVar="ventanaModalDetalleRutina" responsive="true">
+                    <p:outputPanel id="ventana-detalle-rutina" class="ui-fluid">
+                        <div class="field">
+                            <p:outputLabel for="nombreRutina">Nombre Rutina</p:outputLabel>
+                            <p:inputText id="nombreRutina"
+                                         value="#{detalleRutinaFormController.detalleRutina.nombreRutina}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="dificultad">Dificultad</p:outputLabel>
+                            <p:inputText id="dificultad"
+                                         value="#{detalleRutinaFormController.detalleRutina.dificultad}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="duracion">Duración</p:outputLabel>
+                            <p:inputText id="duracion"
+                                         value="#{detalleRutinaFormController.detalleRutina.duracion}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="frecuencia">Frecuencia</p:outputLabel>
+                            <p:inputText id="frecuencia"
+                                         value="#{detalleRutinaFormController.detalleRutina.frecuencia}"
+                                         required="true"/>
+                        </div>
+                        <div class="field">
+                            <p:outputLabel for="clasificacionImc">Clasificación IMC</p:outputLabel>
+                            <p:inputText id="clasificacionImc"
+                                         value="#{detalleRutinaFormController.detalleRutina.clasificacionImc}"
+                                         required="true"/>
+                        </div>
+                    </p:outputPanel>
+
+                    <f:facet name="footer">
+                        <p:commandButton value="Guardar" icon="pi pi-check"
+                                         process="ventana-detalle-rutina @this"
+                                         actionListener="#{detalleRutinaFormController.guardarDetalleRutina}"
+                                         update=":formulario-detalle-rutina:tabla-detalle-rutina :formulario-modal:ventana-detalle-rutina"
+                                         oncomplete="PF('ventanaModalDetalleRutina').hide()"/>
+                        <p:commandButton value="Cancelar" icon="pi pi-times"
+                                         oncomplete="PF('ventanaModalDetalleRutina').hide()"
+                                         class="ui-button-secondary" type="button"/>
+                    </f:facet>
+                </p:dialog>
+
+                <!-- Modal de Confirmación de Eliminación -->
+                <p:confirmDialog widgetVar="ventanaEliminarDetalleRutina"
+                                 showEffect="fade" width="300"
+                                 message="¿Estás seguro de eliminar este detalle de rutina?"
+                                 header="Confirmar" severity="warn">
+                    <p:commandButton value="Sí" icon="pi pi-check"
+                                     process="@this"
+                                     actionListener="#{detalleRutinaFormController.eliminarDetalleRutina}"
+                                     oncomplete="PF('ventanaEliminarDetalleRutina').hide()"/>
+                    <p:commandButton value="No" icon="pi pi-times"
+                                     onclick="PF('ventanaEliminarDetalleRutina').hide()"
+                                     styleClass="ui-button-secondary" type="button"/>
+                </p:confirmDialog>
+            </h:form>
+        </div>
+    </h:body>
+</h:html>

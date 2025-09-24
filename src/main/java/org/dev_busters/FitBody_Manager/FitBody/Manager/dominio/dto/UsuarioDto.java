@@ -5,7 +5,7 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Sex;
-import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Clasificacion;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.ClasificacionImc;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Objetivo;
 
 import java.math.BigDecimal;
@@ -37,7 +37,7 @@ public class UsuarioDto {
 
     @Valid
     @NotBlank(message = "La clasificación IMC es obligatoria")
-    Clasificacion clasificacionImc;
+    ClasificacionImc clasificacionImc;
 
     @Valid
     @NotBlank(message = "El objetivo personal es obligatorio")
@@ -102,11 +102,11 @@ public class UsuarioDto {
         this.pesoDeseado = pesoDeseado;
     }
 
-    public Clasificacion getClasificacionImc() {
+    public ClasificacionImc getClasificacionImc() {
         return clasificacionImc;
     }
 
-    public void setClasificacionImc(Clasificacion clasificacionImc) {
+    public void setClasificacionImc(ClasificacionImc clasificacionImc) {
         this.clasificacionImc = clasificacionImc;
     }
 
