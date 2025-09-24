@@ -6,6 +6,7 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import lombok.Data;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.RegistroDto;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.UsuarioDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.service.RegistroService;
 import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,9 @@ public class RegistroFrontendController implements Serializable {
     private RegistroDto registro;
 
     @PostConstruct
-    public void init(){
+    public void init() {
+        this.registro = new RegistroDto();
+        this.registro.setUsuario(new UsuarioDto());
         cargarDatos();
     }
 

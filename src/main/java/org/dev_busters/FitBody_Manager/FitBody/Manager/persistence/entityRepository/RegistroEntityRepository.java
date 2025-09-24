@@ -43,7 +43,7 @@ public class RegistroEntityRepository implements RegistroRepository {
             throw new RegistroYaExiste(registro.getCorreo());
         }
         RegistroEntity registroEntity = this.registroMapper.toEntity(registro);
-        Long idUsuario = registro.getUsuario().idUsuario();
+        Long idUsuario = registro.getUsuario().getIdUsuario();
         UsuarioEntity usuario = crudUsuarioEntity.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado con id " + idUsuario));
         registroEntity.setUsuario(usuario);
