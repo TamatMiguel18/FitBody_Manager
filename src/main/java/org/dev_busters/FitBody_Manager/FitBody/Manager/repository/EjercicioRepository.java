@@ -16,4 +16,6 @@ public interface EjercicioRepository {
     EjercicioDto modificarEjercicio(Long idEjercicio, ModEjercicioDto modEjercicioDto);
 
     void eliminarEjercicio(Long idEjercicio);
+
+    void modificarEjercicio(Long idEjercicio, EjercicioDto ejercicio);
 }

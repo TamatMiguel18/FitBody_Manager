@@ -5,62 +5,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data // Genera getters, setters, toString, equals y hashCode
-@AllArgsConstructor // Genera un constructor con todos los campos
-@NoArgsConstructor // Genera un constructor sin argumentos
-public class EjercicioDto {
+import java.io.Serializable;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class EjercicioDto implements Serializable {
+
+    private Long idEjercicio;
+
     @NotBlank(message = "Es obligatorio el nombre del ejercicio")
-    String nombreEjercicio;
+    private String nombreEjercicio;
 
     @NotBlank(message = "Es obligatoria la descripcion del ejercicio")
-    String descripcion;
+    private String descripcion;
 
     @NotBlank(message = "Es obligatorio el grupo muscular del ejercicio")
-    String grupoMuscular;
+    private String grupoMuscular;
 
     @NotBlank(message = "Es obligatorio el tipo de ejercicio")
-    String tipoEjercicio;
+    private String tipoEjercicio;
 
     @NotBlank(message = "Es obligatoria la dificultad del ejercicio")
-    String dificultad;
+    private String dificultad;
 
-    public Long getNombreEjercicio() {
-        return nombreEjercicio;
-    }
-
-    public void setNombreEjercicio(String nombreEjercicio) {
-        this.nombreEjercicio = nombreEjercicio;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getGrupoMuscular() {
-        return grupoMuscular;
-    }
-
-    public void setGrupoMuscular(String grupoMuscular) {
-        this.grupoMuscular = grupoMuscular;
-    }
-
-    public String getTipoEjercicio() {
-        return tipoEjercicio;
-    }
-
-    public void setTipoEjercicio(String tipoEjercicio) {
-        this.tipoEjercicio = tipoEjercicio;
-    }
-
-    public String getDificultad() {
-        return dificultad;
-    }
-
-    public void setDificultad(String dificultad) {
-        this.dificultad = dificultad;
-    }
 }
