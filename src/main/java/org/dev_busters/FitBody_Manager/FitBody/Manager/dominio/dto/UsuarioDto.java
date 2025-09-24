@@ -23,7 +23,7 @@ public class UsuarioDto {
     Integer edad;
 
     @Valid
-    @NotBlank(message = "El sexo es obligatorio")
+    @NotNull(message = "El sexo es obligatorio")
     Sex sexo;
 
     @DecimalMin(value = "0.01", message = "La altura debe ser mayor que 0")
@@ -36,97 +36,17 @@ public class UsuarioDto {
     BigDecimal pesoDeseado;
 
     @Valid
-    @NotBlank(message = "La clasificación IMC es obligatoria")
-    Clasificacion clasificacionImc;
+    @NotNull(message = "La clasificación es obligatoria")
+    Clasificacion clasificacion;
 
     @Valid
-    @NotBlank(message = "El objetivo personal es obligatorio")
+    @NotNull(message = "El objetivo personal es obligatorio")
     Objetivo objetivoPersonal;
 
     @DecimalMin(value = "0.0", message = "La masa corporal no puede ser negativa")
-    BigDecimal masaCorpora;
+    BigDecimal masaCorporal;
 
     public UsuarioDto() {
 
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getEdad() {
-        return edad;
-    }
-
-    public void setEdad(Integer edad) {
-        this.edad = edad;
-    }
-
-    public Sex getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(Sex sexo) {
-        this.sexo = sexo;
-    }
-
-    public BigDecimal getAltura() {
-        return altura;
-    }
-
-    public void setAltura(BigDecimal altura) {
-        this.altura = altura;
-    }
-
-    public BigDecimal getPeso() {
-        return peso;
-    }
-
-    public void setPeso(BigDecimal peso) {
-        this.peso = peso;
-    }
-
-    public BigDecimal getPesoDeseado() {
-        return pesoDeseado;
-    }
-
-    public void setPesoDeseado(BigDecimal pesoDeseado) {
-        this.pesoDeseado = pesoDeseado;
-    }
-
-    public Clasificacion getClasificacionImc() {
-        return clasificacionImc;
-    }
-
-    public void setClasificacionImc(Clasificacion clasificacionImc) {
-        this.clasificacionImc = clasificacionImc;
-    }
-
-    public Objetivo getObjetivoPersonal() {
-        return objetivoPersonal;
-    }
-
-    public void setObjetivoPersonal(Objetivo objetivoPersonal) {
-        this.objetivoPersonal = objetivoPersonal;
-    }
-
-    public BigDecimal getMasaCorpora() {
-        return masaCorpora;
-    }
-
-    public void setMasaCorpora(BigDecimal masaCorpora) {
-        this.masaCorpora = masaCorpora;
     }
 }

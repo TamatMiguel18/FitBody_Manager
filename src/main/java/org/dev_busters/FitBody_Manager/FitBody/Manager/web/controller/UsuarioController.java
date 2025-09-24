@@ -32,7 +32,7 @@ public class UsuarioController {
         //      405: Metodo no permitido
         //      500: Error de logica de trabajo o interno
         //      200: ok
-        return ResponseEntity.ok(this.usuarioService.obtenerTodos());
+        return ResponseEntity.ok(this.usuarioService.listarUsuarios());
     }
 
     // Buscar un usuario por Id

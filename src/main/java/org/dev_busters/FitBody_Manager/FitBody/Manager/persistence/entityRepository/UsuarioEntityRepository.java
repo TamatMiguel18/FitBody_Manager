@@ -49,6 +49,10 @@ public class UsuarioEntityRepository implements UsuarioRepository {
     @Override
     public UsuarioDto modificarUsuario(Long Id, ModUsuarioDto modUsuarioDto) {
         UsuarioEntity usuario = this.crudUsuarioEntity.findById(Id).orElse(null);
+        usuario.setAltura(modUsuarioDto.getAltura());
+        usuario.setPeso(modUsuarioDto.getPeso());
+        usuario.setPesoDeseado(modUsuarioDto.getPesoDeseado());
+        usuario.setObjetivoPersonal(modUsuarioDto.getObjetivoPersonal());
 
         if (usuario == null) {
             throw new UsuarioNoExisteException(Id);
@@ -67,5 +71,6 @@ public class UsuarioEntityRepository implements UsuarioRepository {
         } else {
             this.crudUsuarioEntity.deleteById(Id);
         }
+        this.crudUsuarioEntity.delete(usuario);
     }
 }

@@ -1,6 +1,5 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entityRepository;
 
-import jakarta.persistence.Id;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.DetalleRutinaDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModDetalleRutinaDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.DetalleRutinaNoExisteException;

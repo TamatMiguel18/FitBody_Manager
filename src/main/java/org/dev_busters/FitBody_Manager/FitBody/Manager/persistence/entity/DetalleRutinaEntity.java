@@ -20,6 +20,6 @@ public class DetalleRutinaEntity {
     private EjercicioEntity ejercicio;
 
     @ManyToOne
-    @JoinColumn(name = "idRutina", referencedColumnName = "idRutina", nullable = false)
+    @JoinColumn(name = "idRutina", referencedColumnName = "id_Rutina", nullable = false)
     private RutinaEntity rutina;
 }

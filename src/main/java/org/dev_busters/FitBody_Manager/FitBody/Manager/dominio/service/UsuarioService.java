@@ -13,7 +13,7 @@ public class UsuarioService {
 
     public UsuarioService(UsuarioRepository usuarioRepository){ this.usuarioRepository = usuarioRepository;}
 
-    public List<UsuarioDto> obtenerTodos(){ return this.usuarioRepository.obtenerTodos();}
+    public List<UsuarioDto> listarUsuarios(){ return this.usuarioRepository.obtenerTodos();}
 
     public UsuarioDto buscarPorId(Long Id){
         return this.usuarioRepository.buscarPorId(Id);

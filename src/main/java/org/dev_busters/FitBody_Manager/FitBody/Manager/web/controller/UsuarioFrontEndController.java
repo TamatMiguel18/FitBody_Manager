@@ -6,7 +6,10 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import lombok.Data;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.UsuarioDto;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Clasificacion;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.service.UsuarioService;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Sex;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Objetivo;
 import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,11 +29,13 @@ public class UsuarioFrontEndController implements Serializable {
 
     @PostConstruct
     public void init() {
+        this.usuario = new UsuarioDto();
         cargarDatos();
+
     }
 
     public void cargarDatos() {
-        this.listaUsuarios = this.usuarioService.obtenerTodos();
+        this.listaUsuarios = this.usuarioService.listarUsuarios();
     }
 
     public void agregarUsuario() {
@@ -56,5 +61,17 @@ public class UsuarioFrontEndController implements Serializable {
         this.usuario = null;
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario eliminado con exito"));
         PrimeFaces.current().ajax().update("formulario-usuarios:mensaje-emergente", "formulario-usuarios:tabla-usuarios");
+    }
+    // Agrega los getters para los enums
+    public Sex[] getSexos() {
+        return Sex.values();
+    }
+
+    public Clasificacion[] getClasificaciones() {
+        return Clasificacion.values();
+    }
+
+    public Objetivo[] getObjetivos() {
+        return Objetivo.values();
     }
 }

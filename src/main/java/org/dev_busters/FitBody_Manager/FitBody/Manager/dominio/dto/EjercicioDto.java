@@ -25,7 +25,7 @@ public class EjercicioDto {
     String dificultad;
 
     public Long getNombreEjercicio() {
-        return nombreEjercicio;
+        return Long.valueOf(nombreEjercicio);
     }
 
     public void setNombreEjercicio(String nombreEjercicio) {
@@ -62,5 +62,9 @@ public class EjercicioDto {
 
     public void setDificultad(String dificultad) {
         this.dificultad = dificultad;
+    }
+
+    public String nombreEjercicio() {
+        return "";
     }
 }

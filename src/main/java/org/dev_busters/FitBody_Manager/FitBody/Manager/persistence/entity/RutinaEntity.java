@@ -2,7 +2,7 @@ package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.ClasificacionImc;
+import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Clasificacion;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Dificultad;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.enums.Duracion;
 
@@ -32,5 +32,5 @@ public class RutinaEntity {
 
     @Enumerated(EnumType.STRING)
     @Column (name = "clasificacion_imc", length = 150, nullable = false)
-    private ClasificacionImc clasificacionImc;
+    private Clasificacion clasificacion;
 }

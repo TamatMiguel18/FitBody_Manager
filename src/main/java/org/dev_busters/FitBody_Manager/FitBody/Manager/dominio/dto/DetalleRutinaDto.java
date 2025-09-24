@@ -42,6 +42,10 @@ public class DetalleRutinaDto{
     @NotNull(message = "La clasificación IMC es obligatoria")
     Clasificacion clasificacionImc;
 
+    public DetalleRutinaDto() {
+
+    }
+
     public Long getIdDetalleRutina() {
         return idDetalleRutina;
     }

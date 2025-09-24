@@ -48,7 +48,7 @@ public class RutinaEntityRepository  implements RutinaRepository {
         rutinaEntity.setNombreRutina(modRutinaDto.nombreRutina());
         rutinaEntity.setDificultad(modRutinaDto.dificultad());
         rutinaEntity.setDuracion(modRutinaDto.duracion());
-        rutinaEntity.setClasificacionImc(modRutinaDto.clasificacionImc());
+        rutinaEntity.setClasificacion(modRutinaDto.clasificacion());
         rutinaEntity.setFrecuencia(modRutinaDto.frecuencia());
         if (rutinaEntity == null){
             throw new RutinaNotFound(idRutina);

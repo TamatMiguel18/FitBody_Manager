@@ -29,8 +29,8 @@ public class UsuarioEntity {
     @Column(name = "peso_deseado", precision = 10, scale = 2, nullable = false)
     private BigDecimal pesoDeseado;
 
-    @Column(name = "clasificacion_imc", nullable = false)
-    private String clasificacionImc;
+    @Column(name = "clasificacion", nullable = false)
+    private String clasificacion;
 
     @Column(name = "objetivo_personal", nullable = false)
     private String objetivoPersonal;

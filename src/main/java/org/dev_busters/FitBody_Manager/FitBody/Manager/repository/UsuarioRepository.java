@@ -8,9 +8,9 @@ import java.util.List;
 @Repository
 public interface UsuarioRepository {
     // Firmas de los métodos para la entidad Usuario
-    List<UsuarioDto> obtenerTodos();
-    UsuarioDto buscarPorId(Long idUsuario);
-    UsuarioDto guardarUsuario(UsuarioDto usuarioDto);
-    UsuarioDto modificarUsuario(Long idUsuario, ModUsuarioDto modUsuarioDto);
-    void eliminarUsuario(Long idUsuario);
+    public List<UsuarioDto> obtenerTodos();
+    public UsuarioDto buscarPorId(Long idUsuario);
+    public UsuarioDto guardarUsuario(UsuarioDto usuarioDto);
+    public UsuarioDto modificarUsuario(Long idUsuario, ModUsuarioDto modUsuarioDto);
+    public void eliminarUsuario(Long idUsuario);
 }

@@ -50,8 +50,8 @@
                         <p:column headerText="PESO">
                             <h:outputText value="#{usuario.peso}"/>
                         </p:column>
-                        <p:column headerText="CLASIFICACIÓN IMC">
-                            <h:outputText value="#{usuario.clasificacionImc}"/>
+                        <p:column headerText="CLASIFICACIÓN">
+                            <h:outputText value="#{usuario.clasificacion}"/>
                         </p:column>
 
                         <p:column>
@@ -67,11 +67,8 @@
                             </p:commandButton>
                             <p:commandButton value="Eliminar" icon="pi pi-trash"
                                              class="ui-button-danger"
-                                             process="@this"
                                              oncomplete="PF('ventanaEliminarUsuario').show()">
-                                <f:setPropertyActionListener
-                                        value="#{usuario}"
-                                        target="#{usuarioFormController.usuario}"/>
+                                <f:setPropertyActionListener value="#{usuario}" target="#{usuarioFormController.usuario}"/>
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>
@@ -96,7 +93,7 @@
                         <div class="field">
                             <p:outputLabel for="sexo">Sexo</p:outputLabel>
                             <p:selectOneMenu id="sexo" value="#{usuarioFormController.usuario.sexo}" required="true">
-                                <f:selectItems value="#{sex.values()}" var="s" itemLabel="#{s}" itemValue="#{s}" />
+                                <f:selectItems value="#{usuarioFormController.sexos}" var="s" itemLabel="#{s}" itemValue="#{s}" />
                             </p:selectOneMenu>
                         </div>
                         <div class="field">
@@ -118,21 +115,21 @@
                                          required="true"/>
                         </div>
                         <div class="field">
-                            <p:outputLabel for="clasificacionImc">Clasificación IMC</p:outputLabel>
-                            <p:selectOneMenu id="clasificacionImc" value="#{usuarioFormController.usuario.clasificacionImc}" required="true">
-                                <f:selectItems value="#{clasificacion.values()}" var="c" itemLabel="#{c}" itemValue="#{c}" />
+                            <p:outputLabel for="clasificacion">Clasificación</p:outputLabel>
+                            <p:selectOneMenu id="clasificacion" value="#{usuarioFormController.usuario.clasificacion}" required="true">
+                                <f:selectItems value="#{usuarioFormController.clasificaciones}" var="c" itemLabel="#{c}" itemValue="#{c}" />
                             </p:selectOneMenu>
                         </div>
                         <div class="field">
                             <p:outputLabel for="objetivoPersonal">Objetivo Personal</p:outputLabel>
                             <p:selectOneMenu id="objetivoPersonal" value="#{usuarioFormController.usuario.objetivoPersonal}" required="true">
-                                <f:selectItems value="#{objetivo.values()}" var="o" itemLabel="#{o}" itemValue="#{o}" />
+                                <f:selectItems value="#{usuarioFormController.objetivos}" var="o" itemLabel="#{o}" itemValue="#{o}" />
                             </p:selectOneMenu>
                         </div>
                         <div class="field">
                             <p:outputLabel for="masaCorporal">Masa Corporal</p:outputLabel>
                             <p:inputText id="masaCorporal"
-                                         value="#{usuarioFormController.usuario.masaCorpora}"
+                                         value="#{usuarioFormController.usuario.masaCorporal}"
                                          required="true"/>
                         </div>
                     </p:outputPanel>
