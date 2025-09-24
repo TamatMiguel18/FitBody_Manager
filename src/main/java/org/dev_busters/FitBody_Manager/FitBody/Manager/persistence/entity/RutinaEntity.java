@@ -32,4 +32,52 @@ public class RutinaEntity {
     @Enumerated(EnumType.STRING)
     @Column (length = 150, nullable = false)
     private ClasificacionImc clasificacionImc;
+
+    public long getIdRutina() {
+        return idRutina;
+    }
+
+    public void setIdRutina(long idRutina) {
+        this.idRutina = idRutina;
+    }
+
+    public String getNombreRutina() {
+        return nombreRutina;
+    }
+
+    public void setNombreRutina(String nombreRutina) {
+        this.nombreRutina = nombreRutina;
+    }
+
+    public Dificultad getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(Dificultad dificultad) {
+        this.dificultad = dificultad;
+    }
+
+    public Duracion getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(Duracion duracion) {
+        this.duracion = duracion;
+    }
+
+    public Integer getFrecuencia() {
+        return frecuencia;
+    }
+
+    public void setFrecuencia(Integer frecuencia) {
+        this.frecuencia = frecuencia;
+    }
+
+    public ClasificacionImc getClasificacionImc() {
+        return clasificacionImc;
+    }
+
+    public void setClasificacionImc(ClasificacionImc clasificacionImc) {
+        this.clasificacionImc = clasificacionImc;
+    }
 }

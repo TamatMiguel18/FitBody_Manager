@@ -34,7 +34,7 @@ public class RutinaEntityRepository  implements RutinaRepository {
 
     @Override
     public RutinaDto guardarRutina(RutinaDto rutinaDto) {
-        if (this.crudRutinaEntity.findFirstByNombreRutina(rutinaDto.nombreRutina()) != null) {
+        if (this.crudRutinaEntity.findFirstByNombreRutina(rutinaDto.getNombreRutina()) != null) {
             throw new RutinaYaExiste("La rutina con este nombre ya existe.");
         }
         RutinaEntity rutinaEntity = this.rutinaMapper.toEntity(rutinaDto);
@@ -45,11 +45,11 @@ public class RutinaEntityRepository  implements RutinaRepository {
     @Override
     public RutinaDto modificarRutina(Long idRutina, ModRutinaDto modRutinaDto) {
         RutinaEntity rutinaEntity = this.crudRutinaEntity.findById(idRutina).orElse(null);
-        rutinaEntity.setNombreRutina(modRutinaDto.nombreRutina());
-        rutinaEntity.setDificultad(modRutinaDto.dificultad());
-        rutinaEntity.setDuracion(modRutinaDto.duracion());
-        rutinaEntity.setClasificacionImc(modRutinaDto.clasificacionImc());
-        rutinaEntity.setFrecuencia(modRutinaDto.frecuencia());
+        rutinaEntity.setNombreRutina(modRutinaDto.getNombreRutina());
+        rutinaEntity.setDificultad(modRutinaDto.getDificultad());
+        rutinaEntity.setDuracion(modRutinaDto.getDuracion());
+        rutinaEntity.setClasificacionImc(modRutinaDto.getClasificacionImc());
+        rutinaEntity.setFrecuencia(modRutinaDto.getFrecuencia());
         if (rutinaEntity == null){
             throw new RutinaNotFound(idRutina);
         }
