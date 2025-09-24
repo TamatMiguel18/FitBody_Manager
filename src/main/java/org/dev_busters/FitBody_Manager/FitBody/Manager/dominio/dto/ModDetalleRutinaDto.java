@@ -27,4 +27,44 @@ public class ModDetalleRutinaDto{
 
     @NotNull(message = "La clasificación IMC es obligatoria")
     Clasificacion clasificacionImc;
+
+    public String getNombreRutina() {
+        return nombreRutina;
+    }
+
+    public void setNombreRutina(String nombreRutina) {
+        this.nombreRutina = nombreRutina;
+    }
+
+    public Dificultad getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(Dificultad dificultad) {
+        this.dificultad = dificultad;
+    }
+
+    public Duracion getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(Duracion duracion) {
+        this.duracion = duracion;
+    }
+
+    public Integer getFrecuencia() {
+        return frecuencia;
+    }
+
+    public void setFrecuencia(Integer frecuencia) {
+        this.frecuencia = frecuencia;
+    }
+
+    public Clasificacion getClasificacionImc() {
+        return clasificacionImc;
+    }
+
+    public void setClasificacionImc(Clasificacion clasificacionImc) {
+        this.clasificacionImc = clasificacionImc;
+    }
 }
