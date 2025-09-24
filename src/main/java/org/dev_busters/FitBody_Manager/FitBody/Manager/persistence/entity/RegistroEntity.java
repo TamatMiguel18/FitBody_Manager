@@ -18,4 +18,36 @@ public class RegistroEntity {
     private String correo;
     @Column(length = 12, unique = true, nullable = false)
     private String contrasena;
+
+    public Long getIdRegistro() {
+        return idRegistro;
+    }
+
+    public void setIdRegistro(Long idRegistro) {
+        this.idRegistro = idRegistro;
+    }
+
+    public UsuarioEntity getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioEntity usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 }

@@ -12,4 +12,20 @@ public class ModRegistroDto{
     String correo;
     @NotBlank(message = "La contrasena no puede estar vacia")
     String contrasena;
+
+    public @NotNull(message = "El nuevo correo no puede estar vacio") String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(@NotNull(message = "El nuevo correo no puede estar vacio") String correo) {
+        this.correo = correo;
+    }
+
+    public @NotBlank(message = "La contrasena no puede estar vacia") String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(@NotBlank(message = "La contrasena no puede estar vacia") String contrasena) {
+        this.contrasena = contrasena;
+    }
 }

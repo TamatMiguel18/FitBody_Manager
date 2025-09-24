@@ -12,3 +12,6 @@ VALUES ('Pushups', 'ejercicio con manos', 'PECHO', 'FUERZA', 'REGULAR');
 
 INSERT IGNORE INTO Rutina(nombre_rutina, frecuencia, duracion, dificultad, clasificacion_imc)
 VALUES ("Marcar brazos",7,"Semanal","REGULAR","Peso_Normal");
+
+INSERT IGNORE INTO detalle_rutina(nombre_rutina, frecuencia, duracion, dificultad, clasificacion_imc, id_rutina, id_ejercicio)
+VALUES ("Marcar brazos",7,"Semanal","REGULAR","Peso_Normal",1,1);
