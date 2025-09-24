@@ -1,5 +1,6 @@
 package org.dev_busters.FitBody_Manager.FitBody.Manager.persistence.entityRepository;
 
+
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.EjercicioDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.dto.ModEjercicioDto;
 import org.dev_busters.FitBody_Manager.FitBody.Manager.dominio.exception.EjercicioNoExisteExeption;
@@ -18,57 +19,61 @@ public class ejercicioEntityRepository implements EjercicioRepository {
     private final CrudEjercicioEntity crudEjercicioEntity;
     private final EjercicioMapper ejercicioMapper;
 
-    public ejercicioEntityRepository(CrudEjercicioEntity crudEjercicioEntity, EjercicioMapper ejercicioMapper) {
+    public ejercicioEntityRepository(CrudEjercicioEntity crudEjercicioEntity, EjercicioMapper ejercicioMapper){
         this.crudEjercicioEntity = crudEjercicioEntity;
         this.ejercicioMapper = ejercicioMapper;
     }
 
     @Override
-    public List<EjercicioDto> obtenerTodo() {
+    public List<EjercicioDto> obtenerTodo(){
         return this.ejercicioMapper.toDto(this.crudEjercicioEntity.findAll());
     }
 
     @Override
-    public EjercicioDto buscarPorId(Long idEjercicio) {
+    public EjercicioDto buscarPorId(Long idEjercicio){
         return this.ejercicioMapper.toDto(this.crudEjercicioEntity.findById(idEjercicio).orElse(null));
     }
 
     @Override
-    public EjercicioDto guardarEjercicio(EjercicioDto ejercicioDto) {
-        // Verifica si el ejercicio ya existe por su nombre.
-        if (this.crudEjercicioEntity.findByNombreEjercicio(ejercicioDto.getNombreEjercicio()).isPresent()) {
+    public EjercicioDto guardarEjercicio(EjercicioDto ejercicioDto){
+        if (this.crudEjercicioEntity.findByNombreEjercicio(ejercicioDto.getNombreEjercicio()) !=null) {
             throw new EjercicioYaExisteExeption(ejercicioDto.getNombreEjercicio());
         }
-
-        EjercicioEntity ejercicio = this.ejercicioMapper.toEntity(ejercicioDto);
-        EjercicioEntity ejercicioGuardado = this.crudEjercicioEntity.save(ejercicio);
-
-        return this.ejercicioMapper.toDto(ejercicioGuardado);
+        EjercicioEntity ejercicio = new EjercicioEntity();
+        ejercicio = this.ejercicioMapper.toEntity(ejercicioDto);
+        this.crudEjercicioEntity.save(ejercicio);
+        return this.ejercicioMapper.toDto(ejercicio);
     }
 
-    // En ejercicioEntityRepository.java
     @Override
-    public EjercicioDto modificarEjercicio(Long idEjercicio, ModEjercicioDto ejercicioDto) {
-        EjercicioEntity ejercicio = this.crudEjercicioEntity.findById(idEjercicio)
-                .orElseThrow(() -> new EjercicioNoExisteExeption(idEjercicio));
-
-        this.ejercicioMapper.modificarEntityFromDto(ejercicioDto, ejercicio);
-        EjercicioEntity ejercicioModificado = this.crudEjercicioEntity.save(ejercicio);
-
-        return ejercicioMapper.toDto(ejercicioModificado);
+    public EjercicioDto modificarEjercicio(Long idEjercicio, ModEjercicioDto modEjercicioDto){
+        EjercicioEntity ejercicio = this.crudEjercicioEntity.findById(idEjercicio).orElse(null);
+        if (ejercicio == null){
+            throw new EjercicioNoExisteExeption(idEjercicio);
+        }
+        this.ejercicioMapper.modificarEntityFromDto(modEjercicioDto, ejercicio);
+        return ejercicioMapper.toDto(this.crudEjercicioEntity.save(ejercicio));
     }
 
     @Override
     public void eliminarEjercicio(Long idEjercicio) {
-        // Usa una búsqueda por ID y lanza una excepción si no se encuentra.
-        if (!this.crudEjercicioEntity.existsById(idEjercicio)) {
+        EjercicioEntity pelicula = this.crudEjercicioEntity.findById(idEjercicio).orElse(null);
+        //Esepcion
+        if (pelicula == null){
             throw new EjercicioNoExisteExeption(idEjercicio);
-        }
-        this.crudEjercicioEntity.deleteById(idEjercicio);
+        }else {
+            this.crudEjercicioEntity.deleteById(idEjercicio);
     }
-
-    @Override
-    public void modificarEjercicio(Long idEjercicio, EjercicioDto ejercicio) {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
